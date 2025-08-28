@@ -1,0 +1,169 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+5:I[9665,[],"OutletBoundary"]
+8:I[9665,[],"ViewportBoundary"]
+a:I[9665,[],"MetadataBoundary"]
+c:I[6614,[],""]
+:HL["/portfolio/_next/static/css/33258f34a30a0add.css","style"]
+:HL["/portfolio/_next/static/css/a81e9d642ce3e415.css","style"]
+0:{"P":null,"b":"drtaHnksUpatlvlk5uIQK","p":"/portfolio","c":["","projects","basket-ai",""],"i":false,"f":[[["",{"children":["projects",{"children":[["id","basket-ai","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/portfolio/_next/static/css/33258f34a30a0add.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/portfolio/_next/static/css/a81e9d642ce3e415.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":["$","style",null,{"children":"\nhtml {\n  font-family: 'GeistSans', 'GeistSans Fallback';\n  --font-sans: __variable_81ea09;\n  --font-mono: __variable_a1547a;\n}\n        "}]}],["$","body",null,{"className":"overflow-y-auto no-scrollbar","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":["projects",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","basket-ai","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4","$undefined",null,["$","$L5",null,{"children":["$L6","$L7",null]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","EntlnOCYsic8gbGE_Erw0",{"children":[["$","$L8",null,{"children":"$L9"}],null]}],["$","$La",null,{"children":"$Lb"}]]}],false]],"m":"$undefined","G":["$c","$undefined"],"s":false,"S":true}
+d:I[8989,["359","static/chunks/359-fe7aaaf0b8b56caa.js","780","static/chunks/780-2f4b189908922a3e.js","801","static/chunks/app/projects/%5Bid%5D/page-f38748e9e9ab6f59.js"],"Navbar"]
+e:I[5677,["359","static/chunks/359-fe7aaaf0b8b56caa.js","780","static/chunks/780-2f4b189908922a3e.js","801","static/chunks/app/projects/%5Bid%5D/page-f38748e9e9ab6f59.js"],"default"]
+f:I[4482,["359","static/chunks/359-fe7aaaf0b8b56caa.js","780","static/chunks/780-2f4b189908922a3e.js","801","static/chunks/app/projects/%5Bid%5D/page-f38748e9e9ab6f59.js"],"default"]
+10:I[3843,["359","static/chunks/359-fe7aaaf0b8b56caa.js","780","static/chunks/780-2f4b189908922a3e.js","801","static/chunks/app/projects/%5Bid%5D/page-f38748e9e9ab6f59.js"],"default"]
+11:I[8332,["359","static/chunks/359-fe7aaaf0b8b56caa.js","780","static/chunks/780-2f4b189908922a3e.js","801","static/chunks/app/projects/%5Bid%5D/page-f38748e9e9ab6f59.js"],"default"]
+13:I[7746,["359","static/chunks/359-fe7aaaf0b8b56caa.js","780","static/chunks/780-2f4b189908922a3e.js","801","static/chunks/app/projects/%5Bid%5D/page-f38748e9e9ab6f59.js"],"Footer"]
+12:T2594,# Basket-AI: Building a Low-Cost Basketball Tracking System with AI
+
+*Author: Lorenzo Signorelli*
+
+---
+
+## Introduction & Project Vision
+
+Professional basketball leagues like the NBA utilize advanced tracking systems that combine multiple high-resolution cameras, proprietary sensors, and complex data pipelines. These systems provide unparalleled insights into player movement, ball physics, and team tactics. However, with costs reaching hundreds of thousands of euros, this technology remains inaccessible for most national federations and smaller clubs.
+
+In Italy, game analysis is still predominantly manual. Coaches and analysts spend countless hours reviewing game footage to extract basic statistics and tactical patterns—a time-consuming and subjective process.
+
+**Basket-AI** emerged as a research initiative with a clear, ambitious goal: to develop an affordable, AI-powered alternative that automates the most repetitive aspects of game analysis. The system is designed not to replace coaches, but to empower them with automated data extraction, reducing their manual workload and providing objective insights.
+
+---
+
+## System Architecture & Technical Deep Dive
+
+### 1. Player Detection
+**Objective:** Reliably identify and locate all players on the court in every frame.  
+*   **Model:** YOLOv11 (nano variant for speed/accuracy balance).  
+*   **Training Data:** Custom dataset of ~1,500 manually annotated images.  
+*   **Camera Setup:** Two static cameras mounted overhead on opposite sides of the court. This top-down perspective was chosen to minimize player occlusions compared to a ground-level view.  
+*   **Result:** The fine-tuned model achieved stable and precise player bounding box detection across various lighting conditions and game phases.  
+
+![Player_Tracking](/markdown/basket-ai/88_labeled_top_corrected.png)
+
+---
+
+### 2. Ball Detection
+**Objective:** Track the small, fast-moving basketball with high consistency.  
+*   **Challenge:** The ball is a small object that moves at high velocity and is often occluded by players' hands or bodies.  
+*   **Model:** A separate, specialized YOLO model trained specifically on ball instances.  
+*   **Training Data:** Dataset enriched with images focusing on ball during passes, shots, and dribbles.  
+*   **Result:** The model successfully localized the ball in most frames, though occasional drops occurred during heavy occlusions or motion blur.  
+
+---
+
+### 3. Team Identification (Player Segmentation & Clustering)
+**Objective:** Assign each detected player to their correct team based on jersey color.  
+*   **Initial Challenge:** Simple color clustering (K-Means) on the raw player crop was highly sensitive to background colors from the court, stands, and shadows, leading to misclassifications.  
+*   **Solution: A Two-Step Pipeline**
+    1.  **Precise Segmentation:** Used the Segment Anything Model (SAM2), prompted by the YOLO bounding boxes, to generate precise pixel-level masks for each player. This effectively removed the background, leaving only the player and their jersey.  
+    2.  **Robust Clustering:** Applied K-Means clustering on the dominant color channels (e.g., in HSV color space) extracted from the segmented player images. This was combined with color histogram comparisons to improve separation.  
+*   **Enhancement:** When the jersey colors for both teams were known beforehand (e.g., "white" vs. "blue"), the clustering process was guided by this information, significantly boosting accuracy and reliability.  
+
+![Team_tracking](/markdown/basket-ai/teams.gif)
+
+---
+
+### 4. Jersey Number Recognition
+**Objective:** Identify the jersey number of a player to assign a unique identity, a critical step before tracking.  
+*   **Core Problem:** Off-the-shelf OCR models like PARSeq perform poorly on jersey numbers without precise localization due to unusual fonts, folds in the fabric, and motion blur.  
+*   **Developed Pipeline:**
+    1.  **Localization:** Trained a custom YOLO model to detect the specific region of the jersey where the number is located (e.g., upper back). This acted as a high-quality region proposer.  
+    2.  **Recognition:** Cropped the proposed region and passed it to the PARSeq model for actual digit recognition.  
+*   **Performance:** Achieved **79% accuracy** on a challenging test set of 131 images where the number was at least partially visible.  
+
+![Team_tracking](/markdown/basket-ai/grafico.png)
+
+---
+
+### 5. Multi-Object Tracking (MOT) - The Core Challenge  
+**Objective:** Maintain a consistent identity (ID) for each player and the ball across the entire video sequence.  
+
+*   **Model Tested:** ByteTrack, which combines motion prediction (Kalman Filter) with appearance similarity matching to link detections across frames.  
+*   **Primary Obstacles:**  
+    *   **Visual Similarity:** From an overhead view, players on the same team look nearly identical, offering little for appearance-based models to distinguish.  
+    *   **Occlusions & Motion:** Frequent collisions and rapid direction changes often broke the Kalman Filter’s motion assumptions.  
+*   **Result:** The tracker experienced frequent **ID switches** (a player’s identity changing mid-play) and track fragmentation. This made the outputs unreliable for downstream analysis. With stronger ReID models and a camera angle that captures more distinctive body features, tracking performance could improve.  
+*   **Current Outlook:** Our first implementation was unstable, and due to the **lack of sufficient resources (hardware, camera setup, and model fine-tuning), the client decided to discontinue the project**. While newer trackers integrated into frameworks like Ultralytics could improve results, achieving **unsupervised, robust MOT** in a visually homogeneous sports environment remains an open challenge.  
+
+---
+
+> **Note:** Since the client decided to stop MOT development due to missing resources, follow-up tasks such as pose estimation could not be initiated. MOT was a crucial part of the project and needed to be sorted out first.  
+
+---
+
+### 6. Pose Estimation *(Not Initiated)*  
+**Objective:** Estimate the skeletal pose of each player to analyze movements such as jumps, defensive stances, and shooting form.  
+
+*   **Status:** This task was never started. Since the MOT system itself required significantly more resources — and was ultimately discontinued by the client — pose estimation was postponed until a reliable tracking pipeline could be established.  
+*   **Potential Solution:** Once MOT becomes feasible, lightweight models like YOLO-Pose could be fine-tuned for this task.  
+
+<p align="center">  
+  <img src="/markdown/basket-ai/pose.webp" alt="Pose Estimation" width="500" style="margin-bottom:5px"/>  
+  <em>Source: <a href="https://posetrack.net/">PoseTrack</a></em>  
+</p>  
+
+---
+
+## Results & Performance Overview
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Methodology</th>
+      <th>Outcome & Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Player Detection</td>
+      <td>Fine-tuned YOLOv11</td>
+      <td><strong>Stable.</strong> High recall and precision in overhead view.</td>
+    </tr>
+    <tr>
+      <td>Ball Detection</td>
+      <td>Specialized YOLO model</td>
+      <td><strong>Good.</strong> Reliable but can drop during extreme occlusion or blur.</td>
+    </tr>
+    <tr>
+      <td>Team Identification</td>
+      <td>SAM2 + K-Means + Color Histograms</td>
+      <td><strong>Robust.</strong> Highly dependent on successful background removal.</td>
+    </tr>
+    <tr>
+      <td>Number Recognition</td>
+      <td>YOLO (Localization) + PARSeq (OCR)</td>
+      <td><strong>79% Accuracy.</strong> Effective on visible numbers.</td>
+    </tr>
+    <tr>
+      <td>Pose Estimation</td>
+      <td>OpenPose / YOLO-NAS Pose</td>
+      <td><strong>Not Implemented.</strong> Project suspended.</td>
+    </tr>
+    <tr>
+      <td>Multi-Object Tracking</td>
+      <td>ByteTrack</td>
+      <td><strong>Unstable.</strong> ID switches are frequent due to visual similarity from top-down. Fixes expensive.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Conclusion & Future Perspectives
+
+The Basket-AI project successfully demonstrated that core components of a professional basketball tracking system can be replicated using modern computer vision and AI at a fraction of the cost. We built a robust pipeline for **player detection, ball localization, team assignment, and jersey number recognition.**
+
+The primary hurdle, and the reason for the project's pause, was **Multi-Object Tracking (MOT)**. From this challenge, a broader insight emerged: the future of practical computer vision lies in solving robust, long-term MOT. Reliable MOT is the key that unlocks the transition from simple frame-by-frame detection to true **temporal understanding**:
+
+*   **In Sports:** Analyzing full plays, calculating player travel distance, and measuring team formation dynamics.  
+*   **In Autonomous Driving:** Tracking vehicles and pedestrians across time to predict trajectories.  
+*   **In Security & Retail:** Monitoring customer flow and behavior in a store over a complete session.  
+
+Solving MOT would democratize these advanced analytics, making them accessible without the need for the vast resources of large corporations or elite leagues. While Basket-AI is currently paused, it serves as a foundational proof-of-concept and a clear map toward the future of affordable, AI-powered sports analytics.
+4:["$","div",null,{"className":"min-h-screen bg-background","children":[["$","$Ld",null,{}],["$","$Le",null,{}],["$","main",null,{"className":"max-w-6xl mx-auto my-10 px-1 sm:px-6 py-16 space-y-16","children":[["$","$Lf",null,{"project":{"id":"basket-ai","title":"Basket AI","shortDescription":"Exploring computer vision techniques to generate live basketball box scores from video.","image":"/images/projects/ai-basket.png","github":null,"demo":null,"tags":["Computer Vision","YOLO","ByteTrack","K-Means","SAM","Parseq"],"markdown":"/markdown/basket-ai/basket-ai.md","features":["Player detection with YOLO","Tracking using ByteTrack","Squad clustering with K-Means","Segmentation with SAM","Number recognition with Parseq"]}}],["$","$L10",null,{"features":"$4:props:children:2:props:children:0:props:project:features"}],["$","$L11",null,{"markdown":"$12"}]]}],["$","$L13",null,{}]]}]
+9:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+7:null
+b:[["$","title","0",{"children":"Lorenzo Signorelli"}],["$","meta","1",{"name":"description","content":"My porfolio website"}]]
