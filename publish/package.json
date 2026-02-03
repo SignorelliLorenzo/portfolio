@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-publish",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "tsx seed.ts",
+    "setup:assets": "tsx create-assets-table.ts",
+    "sync-markdown": "tsx sync-project-markdown.ts",
+    "publish": "tsx publish-project.ts",
+    "publish:all": "tsx publish-all.ts"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.3",
+    "dotenv": "^16.4.7",
+    "tsx": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22"
+  }
+}
