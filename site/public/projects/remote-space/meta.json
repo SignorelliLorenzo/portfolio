@@ -1,0 +1,23 @@
+{
+  "title": "Remote Space",
+  "shortDescription": "Privacy-focused cloud storage with true end-to-end AES encryption — zero-knowledge architecture where the server never sees plaintext.",
+  "shortDescriptionIt": "Cloud storage incentrato sulla privacy con crittografia AES end-to-end — architettura zero-knowledge dove il server non vede mai il testo in chiaro.",
+  "tags": ["C#", "ASP.NET Core", "AES", "Encryption", "Cloud Storage"],
+  "github": null,
+  "demo": null,
+  "features": [
+    "End-to-end AES-256-GCM encryption",
+    "Zero-knowledge architecture",
+    "Cross-platform clients (WPF, Xamarin, Web)",
+    "Secure file sharing with granular permissions"
+  ],
+  "featuresIt": [
+    "Crittografia end-to-end AES-256-GCM",
+    "Architettura zero-knowledge",
+    "Client cross-platform (WPF, Xamarin, Web)",
+    "Condivisione file sicura con permessi granulari"
+  ],
+  "featured": false,
+  "order": 2,
+  "cover": "hero.jpg"
+}

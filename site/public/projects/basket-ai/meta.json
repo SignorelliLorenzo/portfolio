@@ -1,0 +1,21 @@
+{
+  "title": "Basket-AI",
+  "shortDescription": "Affordable basketball tracking R&D: YOLO-based detections, jersey OCR, and MOT experiments.",
+  "shortDescriptionIt": "R&D sul tracciamento basket low-cost: YOLO per rilevamenti, OCR delle maglie e MOT sperimentale.",
+  "tags": ["Computer Vision", "YOLO", "OCR", "Sports Analytics", "MOT"],
+  "github": null,
+  "demo": null,
+  "features": [
+    "Player and ball detection with custom YOLO models",
+    "SAM2 segmentation + color clustering",
+    "Jersey number localization + PARSeq OCR pipeline"
+  ],
+  "featuresIt": [
+    "Rilevamento giocatori e palla con modelli YOLO custom",
+    "Segmentazione SAM2 + clustering colori",
+    "Pipeline numero di maglia: localizzazione dedicata + OCR PARSeq"
+  ],
+  "featured": false,
+  "cover": "88_labeled_top_corrected.png",
+  "order": 1
+}

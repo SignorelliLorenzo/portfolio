@@ -10,11 +10,13 @@
     "start": "next start",
     "export": "next export ",
     "deploy": "npx gh-pages -d out --dotfiles",
-    "seed": "tsx scripts/seed.ts",
+    "vercel:preview": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\deploy-vercel.ps1 -Target preview",
+    "vercel:prod": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\deploy-vercel.ps1 -Target production",
+    "seed": "npm --prefix ..\\publish run seed",
     "setup:contact": "tsx scripts/create-contact-table.ts",
-    "sync-markdown": "tsx scripts/sync-project-markdown.ts",
-    "setup:assets": "tsx scripts/create-assets-table.ts",
-    "publish": "tsx scripts/publish-project.ts"
+    "sync-markdown": "npm --prefix ..\\publish run sync-markdown",
+    "setup:assets": "npm --prefix ..\\publish run setup:assets",
+    "publish": "npm --prefix ..\\publish run publish --"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.3",

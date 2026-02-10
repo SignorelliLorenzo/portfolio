@@ -1,0 +1,22 @@
+{
+  "title": "UDA-SAM-SS",
+  "shortDescription": "Unsupervised domain adaptation for semantic segmentation using SAM pseudo-labels — bridging outdoor-trained models to indoor scenes.",
+  "shortDescriptionIt": "Adattamento di dominio non supervisionato per segmentazione semantica con pseudo-label SAM — dal dominio outdoor a scene indoor.",
+  "tags": ["Computer Vision", "SAM", "Domain Adaptation", "Semantic Segmentation", "PyTorch"],
+  "github": null,
+  "demo": null,
+  "features": [
+    "SAM-based pseudo-label generation for UDA",
+    "DeepLabV3 fine-tuning with confidence filtering",
+    "Automated ScanNet preprocessing pipeline",
+    "Kimera SLAM integration for robotics"
+  ],
+  "featuresIt": [
+    "Generazione pseudo-label con SAM per UDA",
+    "Fine-tuning DeepLabV3 con filtraggio per confidenza",
+    "Pipeline automatica di preprocessing ScanNet",
+    "Integrazione Kimera SLAM per robotica"
+  ],
+  "featured": false,
+  "order": 3
+}

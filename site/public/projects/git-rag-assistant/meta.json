@@ -1,0 +1,21 @@
+{
+  "title": "Git RAG Assistant",
+  "shortDescription": "Local codebase Q&A with RAG: fast retrieval, grounded answers, and a simple chat UI.",
+  "shortDescriptionIt": "Q&A su codebase in locale con RAG: retrieval veloce, risposte grounded e una UI chat semplice.",
+  "tags": ["RAG", "LLM", "FastAPI", "Next.js", "FAISS"],
+  "github": "https://github.com/SignorelliLorenzo/git-rag-assistant",
+  "demo": null,
+  "features": [
+    "Runs entirely locally (repos + embeddings + retrieval)",
+    "Source-grounded answers with citations/snippets",
+    "Next.js UI + FastAPI backend"
+  ],
+  "featuresIt": [
+    "Tutto in locale (repo + embedding + retrieval)",
+    "Risposte grounded con citazioni/snippet",
+    "UI Next.js + backend FastAPI"
+  ],
+  "featured": true,
+  "cover": "gitrag.png",
+  "order": 0
+}

@@ -1,0 +1,66 @@
+/* How I Work Section Styles */
+
+.how-i-work-section {
+  padding: 8rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-i-work-separator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+.how-i-work-container {
+  max-width: 96rem;
+  margin-inline: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.how-i-work-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.how-i-work-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .how-i-work-title {
+    font-size: 3.75rem;
+  }
+}
+
+.how-i-work-subtitle {
+  font-size: 1.125rem;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .how-i-work-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+.how-i-work-steps {
+  max-width: 48rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
