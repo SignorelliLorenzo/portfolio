@@ -15,7 +15,7 @@
     "Segmentazione SAM2 + clustering colori",
     "Pipeline numero di maglia: localizzazione dedicata + OCR PARSeq"
   ],
-  "featured": false,
+  "featured": true,
   "cover": "88_labeled_top_corrected.png",
   "order": 1
 }

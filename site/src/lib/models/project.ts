@@ -7,7 +7,9 @@ export interface Project {
   markdown?: string | null;
   github?: string | null;
   demo?: string | null;
+  paper?: string | null;
   features?: string[] | null;
   featured?: boolean;
   hasItalianTranslation?: boolean;
+  paperHighlight?: boolean;
 }

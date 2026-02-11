@@ -2,7 +2,10 @@
 
 import { motion, type Transition } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useCallback, type KeyboardEvent, type MouseEvent } from "react";
 import { FaArrowRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { SiArxiv } from "react-icons/si";
 import { Project } from "@/lib/models/project";
 
 import "@/components/styles/project-card.css";
@@ -12,7 +15,6 @@ interface ProjectCardProps {
   href: string;
   ctaLabel: string;
   index?: number;
-  featuredLabel?: string;
   layout?: boolean;
 }
 
@@ -27,10 +29,8 @@ const CARD_TRANSITION: Transition = {
   ease: "easeOut",
 };
 
-function FeaturedBadge({ label }: { label: string }) {
-  return (
-    <div className="project-card-featured">{label}</div>
-  );
+function HighlightBadge({ label }: { label: string }) {
+  return <div className="project-card-featured">{label}</div>;
 }
 
 function ProjectMedia({ project }: { project: Project }) {
@@ -91,35 +91,38 @@ interface ProjectActionsProps {
   ctaLabel: string;
   github?: string;
   demo?: string;
+  paper?: string;
 }
 
-function ProjectActions({ href, ctaLabel, github, demo }: ProjectActionsProps) {
+function ProjectActions({ href, ctaLabel, github, demo, paper }: ProjectActionsProps) {
+  const secondary = (() => {
+    if (demo) {
+      return { href: demo, label: "Live Demo", icon: <FaExternalLinkAlt size={14} /> };
+    }
+    if (github) {
+      return { href: github, label: "GitHub", icon: <FaGithub size={16} /> };
+    }
+    if (paper) {
+      return { href: paper, label: "Paper", icon: <SiArxiv size={16} /> };
+    }
+    return null;
+  })();
+
   return (
     <div className="project-card-actions">
       <Link href={href} className="project-card-primary-cta">
         {ctaLabel}
         <FaArrowRight size={10} />
       </Link>
-      {github && (
+      {secondary && (
         <a
-          href={github}
+          href={secondary.href}
           target="_blank"
           rel="noopener noreferrer"
           className="project-card-secondary-cta"
-          aria-label="GitHub"
+          aria-label={secondary.label}
         >
-          <FaGithub size={16} />
-        </a>
-      )}
-      {demo && (
-        <a
-          href={demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="project-card-secondary-cta"
-          aria-label="Live Demo"
-        >
-          <FaExternalLinkAlt size={14} />
+          {secondary.icon}
         </a>
       )}
     </div>
@@ -131,14 +134,39 @@ export function ProjectCard({
   href,
   ctaLabel,
   index = 0,
-  featuredLabel,
   layout,
 }: ProjectCardProps) {
+  const router = useRouter();
+  const navigateToProject = useCallback(() => {
+    router.push(href);
+  }, [router, href]);
+
+  const handleCardClick = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      const target = event.target as HTMLElement;
+      if (target.closest("a, button")) return;
+      navigateToProject();
+    },
+    [navigateToProject]
+  );
+
+  const handleCardKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        navigateToProject();
+      }
+    },
+    [navigateToProject]
+  );
+
   const transition: Transition = { ...CARD_TRANSITION, delay: index * 0.05 };
   const features = project.features ?? undefined;
   const tags = project.tags ?? undefined;
   const github = project.github ?? undefined;
   const demo = project.demo ?? undefined;
+  const paper = project.paper ?? undefined;
+  const highlightLabel = project.paperHighlight ? "Paper" : undefined;
 
   return (
     <motion.div
@@ -150,16 +178,21 @@ export function ProjectCard({
       whileHover={{ y: -6 }}
       className="group h-full"
     >
-      <div className="project-card-container project-card-surface">
+      <div
+        className="project-card-container project-card-surface"
+        role="link"
+        tabIndex={0}
+        aria-label={`View details for ${project.title}`}
+        onClick={handleCardClick}
+        onKeyDown={handleCardKeyDown}
+      >
         <div
           className="project-card-image-backdrop"
           style={{ backgroundImage: project.image ? `url(${project.image})` : undefined }}
         />
         <div className="project-card-backdrop-gradient" />
 
-        {featuredLabel && (
-          <FeaturedBadge label={featuredLabel} />
-        )}
+        {highlightLabel && <HighlightBadge label={highlightLabel} />}
 
         <div className="project-card-media-wrapper">
           <ProjectMedia project={project} />
@@ -184,6 +217,7 @@ export function ProjectCard({
               ctaLabel={ctaLabel}
               github={github}
               demo={demo}
+              paper={paper}
             />
           </div>
         </div>

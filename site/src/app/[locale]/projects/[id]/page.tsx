@@ -1,8 +1,8 @@
 import { Navbar } from "@/components/navigation/navbar";
 import ScrollToTop from "@/components/navigation/scrolltop";
-import ProjectHero from "./ProjectHero";
-import ProjectFeatures from "./ProjectFeatures";
-import ProjectMarkdown from "./ProjectMarkdown";
+import { ProjectDetailHero } from "@/components/components/content/project-detail-hero";
+import { ProjectDetailFeatures } from "@/components/components/content/project-detail-features";
+import { ProjectDetailMarkdown } from "@/components/components/content/project-detail-markdown";
 import { fetchProjectById } from "@/lib/projects";
 import { Footer } from "@/components/layout/footer";
 import type { Locale } from "@/lib/i18n";
@@ -34,9 +34,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <Navbar hasTranslation={project.hasItalianTranslation} />
         <ScrollToTop />
         <main className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
-          <ProjectHero project={project} />
-          {project.features && <ProjectFeatures features={project.features} />}
-          {markdown && <ProjectMarkdown markdown={markdown} projectId={id} />}
+          <ProjectDetailHero project={project} />
+          {project.features && <ProjectDetailFeatures features={project.features} />}
+          {markdown && <ProjectDetailMarkdown markdown={markdown} projectId={id} />}
         </main>
         <Footer />
       </div>

@@ -13,6 +13,7 @@
   overflow: hidden;
   transition: box-shadow 300ms ease;
   will-change: transform;
+  cursor: pointer;
 }
 
 .project-card-container:hover {
@@ -71,6 +72,9 @@
   height: 100%;
   object-fit: cover;
   transition: transform 700ms ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 .group:hover .project-card-media-image {
@@ -204,6 +208,7 @@
   color: #000;
   transition: transform 200ms ease, background 200ms ease;
   box-shadow: 0 6px 16px -10px rgba(0, 0, 0, 0.45);
+  user-select: none;
 }
 
 .project-card-primary-cta:hover {
@@ -221,6 +226,7 @@
   background: rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.8);
   transition: background 200ms ease, color 200ms ease;
+  user-select: none;
 }
 
 .project-card-secondary-cta:hover {

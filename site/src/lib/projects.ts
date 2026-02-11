@@ -10,11 +10,13 @@ interface ProjectMeta {
   tags?: string[];
   github?: string | null;
   demo?: string | null;
+  paper?: string | null;
   features?: string[];
   featuresIt?: string[];
   featured?: boolean;
   cover?: string;
   order?: number;
+  paperHighlight?: boolean;
 }
 
 const PROJECTS_DIR = path.join(process.cwd(), "public", "projects");
@@ -96,9 +98,11 @@ async function loadProject(projectId: string, locale: Locale): Promise<Project |
       markdown,
       github: meta.github ?? null,
       demo: meta.demo ?? null,
+      paper: meta.paper ?? null,
       features:
         locale === "it" ? meta.featuresIt ?? meta.features ?? null : meta.features ?? null,
       featured: Boolean(meta.featured),
+      paperHighlight: Boolean(meta.paperHighlight),
       hasItalianTranslation,
     };
   } catch {

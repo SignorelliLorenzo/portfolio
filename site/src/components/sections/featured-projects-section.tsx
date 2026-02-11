@@ -48,7 +48,6 @@ export function FeaturedProjectsSection({ projects }: FeaturedProjectsSectionPro
                 index={index}
                 href={`/${landingCopy?.locale ?? "en"}/projects/${project.id}`}
                 ctaLabel={projectsCopy?.viewDetails ?? "View Details"}
-                featuredLabel={project.featured ? "Featured" : undefined}
               />
             </StaggerItem>
           ))}

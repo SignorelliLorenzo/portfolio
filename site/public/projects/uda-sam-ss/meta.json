@@ -1,22 +1,29 @@
 {
-  "title": "UDA-SAM-SS",
-  "shortDescription": "Unsupervised domain adaptation for semantic segmentation using SAM pseudo-labels — bridging outdoor-trained models to indoor scenes.",
-  "shortDescriptionIt": "Adattamento di dominio non supervisionato per segmentazione semantica con pseudo-label SAM — dal dominio outdoor a scene indoor.",
-  "tags": ["Computer Vision", "SAM", "Domain Adaptation", "Semantic Segmentation", "PyTorch"],
-  "github": null,
-  "demo": null,
+  "title": "Instance-Guided UDA",
+  "shortDescription": "Refining pseudo-labels in Unsupervised Domain Adaptation for semantic segmentation using Segment Anything Model (SAM2).",
+  "shortDescriptionIt": "Raffinamento delle pseudo-label in Unsupervised Domain Adaptation per la segmentazione semantica utilizzando Segment Anything Model (SAM2).",
+  "tags": ["Computer Vision", "Deep Learning", "Robotics", "UDA", "SAM2", "Python"],
   "features": [
-    "SAM-based pseudo-label generation for UDA",
-    "DeepLabV3 fine-tuning with confidence filtering",
-    "Automated ScanNet preprocessing pipeline",
-    "Kimera SLAM integration for robotics"
+    "Pseudo-label refinement with SAM2",
+    "Two prompting strategies: Informed & Grid-based",
+    "Evaluation on ScanNet dataset",
+    "Zero-shot semantic segmentation",
+    "Improved object boundary precision",
+    "Unsupervised Domain Adaptation (UDA)"
   ],
   "featuresIt": [
-    "Generazione pseudo-label con SAM per UDA",
-    "Fine-tuning DeepLabV3 con filtraggio per confidenza",
-    "Pipeline automatica di preprocessing ScanNet",
-    "Integrazione Kimera SLAM per robotica"
+    "Raffinamento pseudo-label con SAM2",
+    "Due strategie di prompting: Informed e Grid-based",
+    "Valutazione sul dataset ScanNet",
+    "Segmentazione semantica zero-shot",
+    "Migliore precisione dei contorni degli oggetti",
+    "Unsupervised Domain Adaptation (UDA)"
   ],
-  "featured": false,
-  "order": 3
+  "github": "https://github.com/aislabunimi/domain.adaptation.3D",
+  "demo": null,
+  "featured": true,
+  "paper": "https://arxiv.org/abs/2602.01389",
+  "cover": "mesh5.png",
+  "order": 1,
+  "paperHighlight": true
 }
