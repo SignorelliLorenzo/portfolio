@@ -3,6 +3,19 @@
 ## Overview
 When a robot (or any vision system) is trained in one environment and then deployed in another, its perception quality often drops sharply due to **domain shift**: the deployment data distribution differs from the training distribution (different sensors, lighting, scene layout, textures, etc.).
 
+<table>
+  <tr>
+    <td style="text-align:center;">
+      <img src="/projects/uda-sam-ss/assets/baseline.gif" alt="Baseline pseudo-labels" style="width:100%; max-width:360px; border-radius:24px;" />
+      <div><em>Baseline pseudo-label projection</em></div>
+    </td>
+    <td style="text-align:center;">
+      <img src="/projects/uda-sam-ss/assets/refined.gif" alt="SAM-refined pseudo-labels" style="width:100%; max-width:360px; border-radius:24px;" />
+      <div><em>SAM-refined pseudo-labels</em></div>
+    </td>
+  </tr>
+</table>
+
 This project targets **semantic segmentation** in robotics, and specifically **Unsupervised Domain Adaptation (UDA)** where the target domain is **unlabeled**. In UDA, a common strategy is to create **pseudo-labels** (labels predicted automatically) and use them as supervision to adapt the model.
 
 ### What is Unsupervised Domain Adaptation (UDA)?
@@ -276,7 +289,7 @@ Interpretation:
 - **Calculated** is more consistent and safer for deployment.
 
 ## Qualitative Results
-All qualitative examples below use the best-performing configuration in the thesis: **5 cm voxel size** with **high-resolution RGB**.
+All qualitative examples below use the configuration that performed best in our experiments: **5 cm voxel size** with **high-resolution RGB**.
 
 Each row shows:
 
