@@ -20,6 +20,14 @@ function localizedUrl(locale: string, pathname: string): string {
   return `${siteUrl}/${locale}${pathname}`;
 }
 
+function alternateLanguages(pathname: string): Record<string, string> {
+  return {
+    en: localizedUrl("en", pathname),
+    it: localizedUrl("it", pathname),
+    "x-default": localizedUrl("en", pathname),
+  };
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const projectIds = await getProjectIds();
@@ -32,15 +40,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: now,
         changeFrequency: pathname === "" ? "weekly" : "monthly",
         priority: pathname === "" ? 1 : 0.8,
+        alternates: {
+          languages: alternateLanguages(pathname),
+        },
       });
     }
 
     for (const id of projectIds) {
+      const projectPath = `/projects/${id}`;
       map.push({
-        url: localizedUrl(locale, `/projects/${id}`),
+        url: localizedUrl(locale, projectPath),
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.7,
+        alternates: {
+          languages: alternateLanguages(projectPath),
+        },
       });
     }
   }

@@ -8,22 +8,22 @@ const nextConfig = {
       {
         source: '/',
         destination: '/en',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/contact',
         destination: '/en/contact',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/projects',
         destination: '/en/projects',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/projects/:id',
         destination: '/en/projects/:id',
-        permanent: false,
+        permanent: true,
       },
     ];
   },
