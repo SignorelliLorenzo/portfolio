@@ -1,6 +1,7 @@
 {
   "nav": {
-    "about": "Chi sono"
+    "about": "Chi sono",
+    "resume": "Curriculum"
   },
   "hero": {
     "greeting": "Ciao, sono {{name}}",
@@ -82,7 +83,8 @@
     },
     "bottomLinks": {
       "about": "Chi sono",
-      "projects": "Progetti"
+      "projects": "Progetti",
+      "resume": "Curriculum"
     }
   },
   "contactPage": {
@@ -113,7 +115,130 @@
       }
     },
     "footerPrompt": "Preferisci l'email?",
-    "footerEmail": "your.email@example.com"
+    "footerEmail": "signorelli.lorenzo.business@gmail.com"
+  },
+  "resumePage": {
+    "title": "Curriculum",
+    "subtitle": "AI Software Engineer",
+    "downloadPdf": "Scarica PDF",
+    "profile": {
+      "title": "Profilo",
+      "text": "AI Software Engineer con 3+ anni di esperienza professionale nella creazione di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente progetto architetture AI per Toyota presso Silicon Shoring Reply. Competenze in Python, TypeScript, Java e Go su LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
+    },
+    "experience": {
+      "title": "Esperienza",
+      "items": [
+        {
+          "role": "AI Specialist / AI Architect — Toyota",
+          "company": "Silicon Shoring Reply",
+          "period": "Mag 2026 – Presente",
+          "location": "Milano · Ibrido",
+          "description": "Progettazione e realizzazione di sistemi di AI agentica per Toyota, abilitando assistenza AI, recupero della conoscenza e supporto decisionale intelligente. LangChain, Azure AI Foundry."
+        },
+        {
+          "role": "AI Consultant — Stellantis",
+          "company": "Silicon Shoring Reply",
+          "period": "Gen 2026 – Mag 2026",
+          "location": "Milano · Ibrido",
+          "description": "Collaborazione con team di ingegneria per promuovere pratiche di sviluppo moderne, migliorando la produttività e accelerando la consegna di soluzioni critiche per il business."
+        },
+        {
+          "role": "Sviluppatore Back-End — ARIA",
+          "company": "Silicon Shoring Reply",
+          "period": "Set 2025 – Gen 2026",
+          "location": "Milano · Ibrido",
+          "description": "Progettazione, sviluppo e manutenzione dell'infrastruttura backend del sistema di gestione delle DAT per Regione Lombardia, garantendo scalabilità, affidabilità e sicurezza. Spring Framework."
+        },
+        {
+          "role": "AI Engineer",
+          "company": "FastStackLabs",
+          "period": "Dic 2024 – Set 2025",
+          "location": "Ibrido",
+          "description": "Sviluppo di un algoritmo YOLO per tracking giocatori basket e generazione box score in tempo reale. Soluzioni AI agentiche e computer vision."
+        },
+        {
+          "role": "Sviluppatore Web",
+          "company": "FastStackLabs",
+          "period": "Set 2023 – Dic 2024",
+          "location": "Ibrido",
+          "description": "Creazione di siti web per clienti durante il percorso universitario. React.js, JavaScript, ciclo di vita completo."
+        },
+        {
+          "role": "Web Scraping & Data Analysis — Argenta S.p.A.",
+          "company": "FastStackLabs",
+          "period": "Dic 2022 – Set 2023",
+          "location": "Da remoto",
+          "description": "Sviluppo tool di web scraping per recupero PDF, digitalizzazione ed estrazione dati strutturati in CSV. Selenium, BeautifulSoup, Pandas."
+        },
+        {
+          "role": "Capogruppo (Stage)",
+          "company": "Lutech",
+          "period": "Dic 2019 – Feb 2022",
+          "location": "Bergamo",
+          "description": "Team lead per 3 progetti: CamHouse, BusGlyphs, Authentication Disk. Windows Forms, C#."
+        }
+      ]
+    },
+    "education": {
+      "title": "Formazione",
+      "items": [
+        {
+          "degree": "Laurea Triennale in Informatica",
+          "institution": "Università degli Studi di Milano",
+          "period": "2022 – 2025",
+          "location": "Milano",
+          "grade": "104/110"
+        },
+        {
+          "degree": "Diploma in Informatica",
+          "institution": "ITIS Paleocapa",
+          "period": "2018 – 2022",
+          "location": "Bergamo",
+          "grade": "100/100"
+        }
+      ]
+    },
+    "skills": {
+      "title": "Competenze",
+      "categories": [
+        {
+          "name": "AI / Machine Learning",
+          "items": ["PyTorch", "LangChain", "YOLO", "OpenCV", "Hugging Face", "Azure AI Foundry", "SAM", "AI Agents"]
+        },
+        {
+          "name": "Linguaggi & Framework",
+          "items": ["Python", "TypeScript", "Java", "C++", "C#", "Go", "React", "Next.js", "Node.js", "Spring", ".NET"]
+        },
+        {
+          "name": "Strumenti & Piattaforme",
+          "items": ["Git", "Docker", "Linux", "Azure", "Vercel", "Cursor", "Claude Code"]
+        }
+      ]
+    },
+    "languages": {
+      "title": "Lingue",
+      "items": [
+        { "name": "Italiano", "level": "Madrelingua" },
+        { "name": "Inglese", "level": "B2 (Cambridge First)" }
+      ]
+    },
+    "interests": {
+      "title": "Interessi",
+      "items": [
+        {
+          "name": "AI Agents & RAG",
+          "description": "Sistemi multi-agente, retrieval-augmented generation, sviluppo specification-driven."
+        },
+        {
+          "name": "Computer Vision",
+          "description": "Segmentazione, detection, percezione 3D, domain adaptation."
+        },
+        {
+          "name": "Robotica",
+          "description": "ROS1/Noetic, RTAB-Map, Gazebo, Habitat-Sim."
+        }
+      ]
+    }
   },
   "footer": {
     "rights": "Tutti i diritti riservati"

@@ -25,6 +25,11 @@ const nextConfig = {
         destination: '/en/projects/:id',
         permanent: true,
       },
+      {
+        source: '/resume',
+        destination: '/en/resume',
+        permanent: true,
+      },
     ];
   },
 }

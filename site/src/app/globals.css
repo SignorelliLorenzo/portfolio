@@ -116,6 +116,35 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  :root {
+    --background: oklch(0.09 0.025 272);
+    --foreground: oklch(0.95 0 0);
+    --card: oklch(0.13 0.02 270);
+    --card-foreground: oklch(0.95 0 0);
+    --primary: oklch(0.95 0 0);
+    --primary-foreground: oklch(0.05 0 0);
+    --secondary: oklch(0.7 0.3 270);
+    --secondary-foreground: oklch(0.05 0 0);
+    --muted: oklch(0.12 0.015 270);
+    --muted-foreground: oklch(0.68 0.01 260);
+    --accent: oklch(0.65 0.35 280);
+    --accent-foreground: oklch(0.05 0 0);
+    --border: oklch(0.18 0.025 272);
+    --input: oklch(0.13 0.02 270);
+    --ring: oklch(0.7 0.3 270 / 0.6);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

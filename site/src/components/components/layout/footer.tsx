@@ -195,6 +195,9 @@ export function Footer() {
             <Link href={`/${locale}/projects`} className="hover:text-foreground transition-colors">
               {contactCopy?.bottomLinks?.projects ?? "Projects"}
             </Link>
+            <Link href={`/${locale}/resume`} className="hover:text-foreground transition-colors">
+              {contactCopy?.bottomLinks?.resume ?? "Resume"}
+            </Link>
           </div>
         </div>
       </div>

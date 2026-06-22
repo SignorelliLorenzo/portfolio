@@ -1,6 +1,7 @@
 {
   "nav": {
-    "about": "About"
+    "about": "About",
+    "resume": "Resume"
   },
   "hero": {
     "greeting": "Hi, I'm {{name}}",
@@ -82,7 +83,8 @@
     },
     "bottomLinks": {
       "about": "About",
-      "projects": "Projects"
+      "projects": "Projects",
+      "resume": "Resume"
     }
   },
   "contactPage": {
@@ -113,7 +115,130 @@
       }
     },
     "footerPrompt": "Prefer email?",
-    "footerEmail": "your.email@example.com"
+    "footerEmail": "signorelli.lorenzo.business@gmail.com"
+  },
+  "resumePage": {
+    "title": "Resume",
+    "subtitle": "AI Software Engineer",
+    "downloadPdf": "Download PDF",
+    "profile": {
+      "title": "Profile",
+      "text": "AI Software Engineer with 3+ years of professional experience building agentic AI systems, computer vision pipelines and full-stack applications. Currently designing AI architectures for Toyota at Silicon Shoring Reply. Skilled in Python, TypeScript, Java and Go across LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
+    },
+    "experience": {
+      "title": "Experience",
+      "items": [
+        {
+          "role": "AI Specialist / AI Architect — Toyota",
+          "company": "Silicon Shoring Reply",
+          "period": "May 2026 – Present",
+          "location": "Milan, Italy · Hybrid",
+          "description": "Designing and building agentic AI systems for Toyota, enabling AI-powered assistance, knowledge retrieval and intelligent decision support across business processes. LangChain, Azure AI Foundry."
+        },
+        {
+          "role": "AI Consultant — Stellantis",
+          "company": "Silicon Shoring Reply",
+          "period": "Jan 2026 – May 2026",
+          "location": "Milan, Italy · Hybrid",
+          "description": "Collaborated with engineering teams to drive adoption of modern development practices, improving productivity, optimizing workflows and accelerating delivery of business-critical solutions."
+        },
+        {
+          "role": "Back-End Developer — ARIA",
+          "company": "Silicon Shoring Reply",
+          "period": "Sep 2025 – Jan 2026",
+          "location": "Milan, Italy · Hybrid",
+          "description": "Designed, developed and maintained the entire backend infrastructure for the DAT management system for Regione Lombardia, ensuring scalability, reliability and security. Spring Framework."
+        },
+        {
+          "role": "AI Engineer",
+          "company": "FastStackLabs",
+          "period": "Dec 2024 – Sep 2025",
+          "location": "Hybrid",
+          "description": "Developed a YOLO-based image analysis algorithm for basketball player tracking and live box score generation. Built agentic AI and computer vision solutions."
+        },
+        {
+          "role": "Web Developer",
+          "company": "FastStackLabs",
+          "period": "Sep 2023 – Dec 2024",
+          "location": "Hybrid",
+          "description": "Built custom websites for clients during university. React.js, JavaScript, full project lifecycle."
+        },
+        {
+          "role": "Web Scraping & Data Analysis — Argenta S.p.A.",
+          "company": "FastStackLabs",
+          "period": "Dec 2022 – Sep 2023",
+          "location": "Remote",
+          "description": "Developed a web scraping tool to retrieve PDFs, digitize them and extract structured data into CSV. Selenium, BeautifulSoup, Pandas."
+        },
+        {
+          "role": "Team Lead (Internship)",
+          "company": "Lutech",
+          "period": "Dec 2019 – Feb 2022",
+          "location": "Bergamo, Italy",
+          "description": "Led 3 projects as team lead: CamHouse, BusGlyphs, Authentication Disk. Windows Forms, C#."
+        }
+      ]
+    },
+    "education": {
+      "title": "Education",
+      "items": [
+        {
+          "degree": "BSc in Computer Science",
+          "institution": "University of Milan",
+          "period": "2022 – 2025",
+          "location": "Milan, Italy",
+          "grade": "104/110"
+        },
+        {
+          "degree": "Diploma in Computer Science",
+          "institution": "ITIS Paleocapa",
+          "period": "2018 – 2022",
+          "location": "Bergamo, Italy",
+          "grade": "100/100"
+        }
+      ]
+    },
+    "skills": {
+      "title": "Skills",
+      "categories": [
+        {
+          "name": "AI / Machine Learning",
+          "items": ["PyTorch", "LangChain", "YOLO", "OpenCV", "Hugging Face", "Azure AI Foundry", "SAM", "AI Agents"]
+        },
+        {
+          "name": "Languages & Frameworks",
+          "items": ["Python", "TypeScript", "Java", "C++", "C#", "Go", "React", "Next.js", "Node.js", "Spring", ".NET"]
+        },
+        {
+          "name": "Tools & Platforms",
+          "items": ["Git", "Docker", "Linux", "Azure", "Vercel", "Cursor", "Claude Code"]
+        }
+      ]
+    },
+    "languages": {
+      "title": "Languages",
+      "items": [
+        { "name": "Italian", "level": "Native" },
+        { "name": "English", "level": "B2 (Cambridge First)" }
+      ]
+    },
+    "interests": {
+      "title": "Interests",
+      "items": [
+        {
+          "name": "AI Agents & RAG",
+          "description": "Multi-agent systems, retrieval-augmented generation, specification-driven development."
+        },
+        {
+          "name": "Computer Vision",
+          "description": "Segmentation, detection, 3D perception, domain adaptation."
+        },
+        {
+          "name": "Robotics",
+          "description": "ROS1/Noetic, RTAB-Map, Gazebo, Habitat-Sim."
+        }
+      ]
+    }
   },
   "footer": {
     "rights": "All rights reserved."

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
 interface ContactFormData {
   name: string;
@@ -32,17 +33,19 @@ function checkRateLimit(ip: string): boolean {
 function getClientIP(request: NextRequest): string {
   const forwarded = request.headers.get("x-forwarded-for");
   const realIP = request.headers.get("x-real-ip");
-  
+
   if (forwarded) {
     return forwarded.split(",")[0].trim();
   }
-  
+
   if (realIP) {
     return realIP;
   }
-  
+
   return "unknown";
 }
+
+const RECIPIENT_EMAIL = "signorelli.lorenzo.business@gmail.com";
 
 export async function POST(request: NextRequest) {
   try {
@@ -79,17 +82,43 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Integrate with email service (Resend, Postmark, SendGrid)
-    // For now, we'll log the submission
-    console.log("Contact form submission:", {
-      name,
-      email,
-      company,
-      subject,
-      message,
-      timestamp: new Date().toISOString(),
-      ip: clientIP,
-    });
+    // Send email via Resend
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      const emailSubject = subject
+        ? `Portfolio Contact: ${subject}`
+        : `Portfolio Contact from ${name}`;
+
+      await resend.emails.send({
+        from: "Portfolio <onboarding@resend.dev>",
+        to: [RECIPIENT_EMAIL],
+        replyTo: email,
+        subject: emailSubject,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
+          ${subject ? `<p><strong>Subject:</strong> ${subject}</p>` : ""}
+          <hr />
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, "<br />")}</p>
+          <hr />
+          <p style="color: #888; font-size: 12px;">Sent from portfolio contact form | IP: ${clientIP}</p>
+        `,
+      });
+    } else {
+      console.log("RESEND_API_KEY not set — logging contact submission:", {
+        name,
+        email,
+        company,
+        subject,
+        message,
+        timestamp: new Date().toISOString(),
+        ip: clientIP,
+      });
+    }
 
     // Optional: Store in Neon database
     if (process.env.DATABASE_URL) {
@@ -104,7 +133,6 @@ export async function POST(request: NextRequest) {
         }
       } catch (dbError) {
         console.error("Failed to store in database:", dbError);
-        // Continue anyway - don't fail the request if DB storage fails
       }
     }
 
