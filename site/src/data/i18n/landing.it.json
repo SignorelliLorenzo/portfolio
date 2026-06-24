@@ -121,6 +121,7 @@
     "title": "Curriculum",
     "subtitle": "AI Software Engineer",
     "downloadPdf": "Scarica PDF",
+    "mobileHint": "L'anteprima A4 completa si vede meglio su uno schermo più grande — scarica il PDF per leggerla.",
     "profile": {
       "title": "Profilo",
       "text": "AI Software Engineer con 3+ anni di esperienza professionale nella creazione di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente progetto architetture AI per Toyota presso Silicon Shoring Reply. Competenze in Python, TypeScript, Java e Go su LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
@@ -133,49 +134,49 @@
           "company": "Silicon Shoring Reply",
           "period": "Mag 2026 – Presente",
           "location": "Milano · Ibrido",
-          "description": "Progettazione e realizzazione di sistemi di AI agentica per Toyota, abilitando assistenza AI, recupero della conoscenza e supporto decisionale intelligente. LangChain, Azure AI Foundry."
+          "description": "Progettazione e realizzazione di sistemi di AI agentica in produzione per Toyota — assistenti AI, recupero della conoscenza aziendale e supporto decisionale intelligente sui processi di business core. LangChain, Azure AI Foundry."
         },
         {
           "role": "AI Consultant — Stellantis",
           "company": "Silicon Shoring Reply",
           "period": "Gen 2026 – Mag 2026",
           "location": "Milano · Ibrido",
-          "description": "Collaborazione con team di ingegneria per promuovere pratiche di sviluppo moderne, migliorando la produttività e accelerando la consegna di soluzioni critiche per il business."
+          "description": "Guida all'adozione di pratiche di sviluppo moderne e AI-assisted nei team di ingegneria Stellantis, ottimizzando i workflow e accelerando la consegna di soluzioni critiche per il business."
         },
         {
           "role": "Sviluppatore Back-End — ARIA",
           "company": "Silicon Shoring Reply",
           "period": "Set 2025 – Gen 2026",
           "location": "Milano · Ibrido",
-          "description": "Progettazione, sviluppo e manutenzione dell'infrastruttura backend del sistema di gestione delle DAT per Regione Lombardia, garantendo scalabilità, affidabilità e sicurezza. Spring Framework."
+          "description": "Unico responsabile del backend che alimenta il sistema di gestione delle DAT per Regione Lombardia — progettazione, sviluppo e manutenzione di servizi Spring scalabili e sicuri per una piattaforma pubblica a livello regionale."
         },
         {
           "role": "AI Engineer",
           "company": "FastStackLabs",
           "period": "Dic 2024 – Set 2025",
           "location": "Ibrido",
-          "description": "Sviluppo di un algoritmo YOLO per tracking giocatori basket e generazione box score in tempo reale. Soluzioni AI agentiche e computer vision."
+          "description": "Sviluppo di una pipeline di computer vision basata su YOLO per il tracking dei giocatori di basket e la generazione di box score live dalle riprese di gioco, eliminando il conteggio manuale. Inoltre soluzioni di AI agentica per clienti."
         },
         {
           "role": "Sviluppatore Web",
           "company": "FastStackLabs",
           "period": "Set 2023 – Dic 2024",
           "location": "Ibrido",
-          "description": "Creazione di siti web per clienti durante il percorso universitario. React.js, JavaScript, ciclo di vita completo."
+          "description": "Realizzazione di siti web per clienti end-to-end — dal design al deploy — con React.js e JavaScript, in parallelo agli studi universitari a tempo pieno."
         },
         {
           "role": "Web Scraping & Data Analysis — Argenta S.p.A.",
           "company": "FastStackLabs",
           "period": "Dic 2022 – Set 2023",
           "location": "Da remoto",
-          "description": "Sviluppo tool di web scraping per recupero PDF, digitalizzazione ed estrazione dati strutturati in CSV. Selenium, BeautifulSoup, Pandas."
+          "description": "Sviluppo di una pipeline automatica che effettua scraping e digitalizzazione di PDF in dati strutturati CSV, sostituendo l'inserimento manuale. Selenium, BeautifulSoup, Pandas."
         },
         {
           "role": "Capogruppo (Stage)",
           "company": "Lutech",
           "period": "Dic 2019 – Feb 2022",
           "location": "Bergamo",
-          "description": "Team lead per 3 progetti: CamHouse, BusGlyphs, Authentication Disk. Windows Forms, C#."
+          "description": "Guida del team alla consegna end-to-end di 3 progetti — CamHouse, BusGlyphs e Authentication Disk — in C# e Windows Forms."
         }
       ]
     },
@@ -219,7 +220,7 @@
       "title": "Lingue",
       "items": [
         { "name": "Italiano", "level": "Madrelingua" },
-        { "name": "Inglese", "level": "B2 (Cambridge First)" }
+        { "name": "Inglese", "level": "C2 (Avanzato)" }
       ]
     },
     "interests": {

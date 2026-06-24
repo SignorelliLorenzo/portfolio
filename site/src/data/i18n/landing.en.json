@@ -121,6 +121,7 @@
     "title": "Resume",
     "subtitle": "AI Software Engineer",
     "downloadPdf": "Download PDF",
+    "mobileHint": "The full A4 preview is best viewed on a larger screen — download the PDF to read it.",
     "profile": {
       "title": "Profile",
       "text": "AI Software Engineer with 3+ years of professional experience building agentic AI systems, computer vision pipelines and full-stack applications. Currently designing AI architectures for Toyota at Silicon Shoring Reply. Skilled in Python, TypeScript, Java and Go across LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
@@ -133,49 +134,49 @@
           "company": "Silicon Shoring Reply",
           "period": "May 2026 – Present",
           "location": "Milan, Italy · Hybrid",
-          "description": "Designing and building agentic AI systems for Toyota, enabling AI-powered assistance, knowledge retrieval and intelligent decision support across business processes. LangChain, Azure AI Foundry."
+          "description": "Architecting and shipping production agentic AI systems for Toyota — powering AI assistants, enterprise knowledge retrieval and intelligent decision support across core business processes. Built on LangChain and Azure AI Foundry."
         },
         {
           "role": "AI Consultant — Stellantis",
           "company": "Silicon Shoring Reply",
           "period": "Jan 2026 – May 2026",
           "location": "Milan, Italy · Hybrid",
-          "description": "Collaborated with engineering teams to drive adoption of modern development practices, improving productivity, optimizing workflows and accelerating delivery of business-critical solutions."
+          "description": "Drove adoption of modern, AI-assisted development practices across Stellantis engineering teams, streamlining workflows and accelerating delivery of business-critical solutions."
         },
         {
           "role": "Back-End Developer — ARIA",
           "company": "Silicon Shoring Reply",
           "period": "Sep 2025 – Jan 2026",
           "location": "Milan, Italy · Hybrid",
-          "description": "Designed, developed and maintained the entire backend infrastructure for the DAT management system for Regione Lombardia, ensuring scalability, reliability and security. Spring Framework."
+          "description": "Sole owner of the backend powering the DAT management system for Regione Lombardia — designed, built and maintained scalable, secure Spring services running a region-wide public-sector platform."
         },
         {
           "role": "AI Engineer",
           "company": "FastStackLabs",
           "period": "Dec 2024 – Sep 2025",
           "location": "Hybrid",
-          "description": "Developed a YOLO-based image analysis algorithm for basketball player tracking and live box score generation. Built agentic AI and computer vision solutions."
+          "description": "Built a YOLO-based computer vision pipeline that tracks basketball players and generates live box scores from raw game footage, replacing manual stat-keeping. Also delivered agentic AI solutions for clients."
         },
         {
           "role": "Web Developer",
           "company": "FastStackLabs",
           "period": "Sep 2023 – Dec 2024",
           "location": "Hybrid",
-          "description": "Built custom websites for clients during university. React.js, JavaScript, full project lifecycle."
+          "description": "Delivered custom client websites end-to-end — from design to deployment — with React.js and JavaScript while studying full-time."
         },
         {
           "role": "Web Scraping & Data Analysis — Argenta S.p.A.",
           "company": "FastStackLabs",
           "period": "Dec 2022 – Sep 2023",
           "location": "Remote",
-          "description": "Developed a web scraping tool to retrieve PDFs, digitize them and extract structured data into CSV. Selenium, BeautifulSoup, Pandas."
+          "description": "Built an automated pipeline that scrapes and digitizes PDFs into structured CSV data, replacing manual data entry. Selenium, BeautifulSoup, Pandas."
         },
         {
           "role": "Team Lead (Internship)",
           "company": "Lutech",
           "period": "Dec 2019 – Feb 2022",
           "location": "Bergamo, Italy",
-          "description": "Led 3 projects as team lead: CamHouse, BusGlyphs, Authentication Disk. Windows Forms, C#."
+          "description": "Led a team to deliver 3 projects end-to-end — CamHouse, BusGlyphs and Authentication Disk — in C# and Windows Forms."
         }
       ]
     },
@@ -219,7 +220,7 @@
       "title": "Languages",
       "items": [
         { "name": "Italian", "level": "Native" },
-        { "name": "English", "level": "B2 (Cambridge First)" }
+        { "name": "English", "level": "C2 (Proficient)" }
       ]
     },
     "interests": {

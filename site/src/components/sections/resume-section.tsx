@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -23,15 +23,76 @@ interface ResumeSectionProps {
   copy: ResumeCopy;
 }
 
-const ACCENT = "#c49a6c";
-const ACCENT_60 = "rgba(196,154,108,0.6)";
-const ACCENT_70 = "rgba(196,154,108,0.7)";
-const ACCENT_40 = "rgba(196,154,108,0.4)";
-const ACCENT_25 = "rgba(196,154,108,0.25)";
-const ACCENT_50 = "rgba(196,154,108,0.5)";
+type RGB = [number, number, number];
+
+interface Palette {
+  id: string;
+  label: string;
+  accent: RGB;
+  accentText: RGB;
+  sidebarBg: string;
+  sidebarFg: RGB;
+  sidebarStrong: string;
+  mainBg: string;
+  mainFg: RGB;
+  mainStrong: string;
+}
+
+const PALETTES: Palette[] = [
+  {
+    id: "bronze",
+    label: "Bronze",
+    accent: [196, 154, 108],
+    accentText: [196, 154, 108],
+    sidebarBg: "#110f0c",
+    sidebarFg: [255, 255, 255],
+    sidebarStrong: "#ffffff",
+    mainBg: "#161310",
+    mainFg: [255, 255, 255],
+    mainStrong: "rgba(255,255,255,0.95)",
+  },
+  {
+    id: "daylight",
+    label: "Daylight",
+    accent: [13, 110, 102],
+    accentText: [12, 74, 69],
+    sidebarBg: "#eceff0",
+    sidebarFg: [22, 28, 30],
+    sidebarStrong: "#131819",
+    mainBg: "#ffffff",
+    mainFg: [22, 28, 30],
+    mainStrong: "#131819",
+  },
+  {
+    id: "midnight",
+    label: "Midnight",
+    accent: [122, 162, 247],
+    accentText: [122, 162, 247],
+    sidebarBg: "#0b1019",
+    sidebarFg: [255, 255, 255],
+    sidebarStrong: "#ffffff",
+    mainBg: "#10151f",
+    mainFg: [255, 255, 255],
+    mainStrong: "rgba(255,255,255,0.95)",
+  },
+];
+
+const rgba = (c: RGB, a: number) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
 export function ResumeSection({ copy }: ResumeSectionProps) {
   const resumeRef = useRef<HTMLDivElement>(null);
+  const [paletteId, setPaletteId] = useState(PALETTES[0].id);
+  const p = PALETTES.find((x) => x.id === paletteId) ?? PALETTES[0];
+
+  // Color tokens derived from the active palette
+  const ACCENT = rgba(p.accent, 1);
+  const ACCENT_60 = rgba(p.accent, 0.6);
+  const ACCENT_50 = rgba(p.accent, 0.5);
+  const ACCENT_40 = rgba(p.accent, 0.4);
+  const ACCENT_25 = rgba(p.accent, 0.25);
+  const S = (a: number) => rgba(p.sidebarFg, a);
+  const M = (a: number) => rgba(p.mainFg, a);
+  const AT = (a: number) => rgba(p.accentText, a); // accent-colored text (readable on any bg)
 
   const handlePrint = useReactToPrint({
     contentRef: resumeRef,
@@ -44,19 +105,65 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
       <main className="pt-24 pb-12 px-4 sm:px-6">
         <div className="w-[210mm] max-w-full mx-auto">
 
-          <Reveal className="flex justify-end mb-3">
+          <Reveal className="flex flex-wrap items-center justify-between gap-3 mb-3 print:hidden">
+            {/* Palette switcher */}
+            <div className="flex items-center gap-2">
+              {PALETTES.map((pl) => {
+                const active = pl.id === p.id;
+                return (
+                  <motion.button
+                    key={pl.id}
+                    onClick={() => setPaletteId(pl.id)}
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.94 }}
+                    aria-pressed={active}
+                    aria-label={pl.label}
+                    title={pl.label}
+                    className={`flex items-center justify-center rounded-full p-[3px] border-2 transition-colors ${
+                      active ? "border-accent" : "border-transparent hover:border-border"
+                    }`}
+                  >
+                    <span
+                      className="block w-5 h-5 rounded-full"
+                      style={{
+                        background: `linear-gradient(135deg, ${pl.sidebarBg} 0 50%, ${rgba(pl.accent, 1)} 50% 100%)`,
+                        boxShadow: "inset 0 0 0 1px rgba(128,128,128,0.35)",
+                      }}
+                    />
+                  </motion.button>
+                );
+              })}
+            </div>
+
             <motion.button
               onClick={() => handlePrint()}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 px-5 py-2.5 bg-accent text-accent-foreground rounded-lg font-medium text-sm hover:bg-accent/90 transition-colors print:hidden"
+              className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-accent text-accent-foreground rounded-lg font-medium text-sm hover:bg-accent/90 transition-colors"
             >
               <FaDownload size={13} />
               {copy.downloadPdf}
             </motion.button>
           </Reveal>
 
-          <Reveal>
+          {/* Mobile: skip the heavy A4 preview, prompt to download instead */}
+          <div className="md:hidden rounded-lg border border-border bg-card/40 px-5 py-6 text-center print:hidden">
+            <p className="text-sm text-muted-foreground">
+              {copy.mobileHint}
+            </p>
+            <motion.button
+              onClick={() => handlePrint()}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-accent-foreground rounded-lg font-medium text-sm hover:bg-accent/90 transition-colors"
+            >
+              <FaDownload size={13} />
+              {copy.downloadPdf}
+            </motion.button>
+          </div>
+
+          {/* Preview rendered on desktop only; still mounted so print/download works */}
+          <Reveal className="hidden md:block">
             <div
               ref={resumeRef}
               className="w-[210mm] max-w-full rounded-lg shadow-2xl overflow-hidden print:shadow-none print:rounded-none"
@@ -67,13 +174,13 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
               {/* ─── SIDEBAR ─── */}
               <div
                 className="flex flex-col border-2 rounded-l-lg pt-4 pb-4 relative overflow-hidden"
-                style={{ backgroundColor: "#110f0c", color: "#fff", borderColor: "rgba(255,255,255,0.12)" }}
+                style={{ backgroundColor: p.sidebarBg, color: p.sidebarStrong, borderColor: S(0.12) }}
               >
                 {/* Subtle sidebar gradient accent */}
                 <div className="absolute top-0 left-0 right-0 h-[200px] pointer-events-none" style={{ background: `linear-gradient(180deg, ${ACCENT_25} 0%, transparent 100%)`, opacity: 0.15 }} />
 
                 {/* Header block */}
-                <div className="px-5 pt-5 pb-4 flex flex-col items-center text-center relative" style={{ borderBottom: `1px solid rgba(255,255,255,0.06)` }}>
+                <div className="px-5 pt-5 pb-4 flex flex-col items-center text-center relative" style={{ borderBottom: `1px solid ${S(0.06)}` }}>
                   <div className="w-[130px] h-[130px] rounded-xl overflow-hidden mb-3" style={{ boxShadow: `0 0 0 2.5px ${ACCENT_50}, 0 8px 24px -8px rgba(0,0,0,0.6)` }}>
                     <img
                       src="/developer-headshot.png"
@@ -81,10 +188,10 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h1 className="text-[19px] font-bold leading-[1.2] tracking-[-0.02em]" style={{ color: "#fff" }}>
+                  <h1 className="text-[19px] font-bold leading-[1.2] tracking-[-0.02em]" style={{ color: p.sidebarStrong }}>
                     Lorenzo Signorelli
                   </h1>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] mt-1.5" style={{ color: ACCENT }}>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] mt-1.5" style={{ color: AT(1) }}>
                     {copy.subtitle}
                   </p>
                 </div>
@@ -96,7 +203,7 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-[2.5px] h-[11px] rounded-full" style={{ backgroundColor: ACCENT_60 }} />
-                      <h2 className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.4)" }}>
+                      <h2 className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: S(0.4) }}>
                         Contact
                       </h2>
                     </div>
@@ -118,7 +225,7 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                           </>
                         );
                         const cls = `flex items-center gap-2.5 text-[10.5px]`;
-                        const s = { color: "rgba(255,255,255,0.55)" };
+                        const s = { color: S(0.55) };
                         return href ? (
                           <a key={idx} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={cls} style={s}>{inner}</a>
                         ) : (
@@ -132,17 +239,17 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                   <div>
                     <div className="flex items-center gap-2 mb-2.5">
                       <div className="w-[2.5px] h-[11px] rounded-full" style={{ backgroundColor: ACCENT_60 }} />
-                      <h2 className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.4)" }}>
+                      <h2 className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: S(0.4) }}>
                         {copy.skills.title}
                       </h2>
                     </div>
                     <div className="space-y-3.5">
                       {copy.skills.categories.map((cat, i) => (
                         <div key={i}>
-                          <h3 className="text-[9.5px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: ACCENT_50 }}>
+                          <h3 className="text-[9.5px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: AT(0.75) }}>
                             {cat.name}
                           </h3>
-                          <p className="text-[10.5px] leading-[1.7]" style={{ color: "rgba(255,255,255,0.5)" }}>
+                          <p className="text-[10.5px] leading-[1.7]" style={{ color: M(0.5) }}>
                             {cat.items.join(" · ")}
                           </p>
                         </div>
@@ -154,7 +261,7 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                   <div>
                     <div className="flex items-center gap-2 mb-2.5">
                       <div className="w-[2.5px] h-[11px] rounded-full" style={{ backgroundColor: ACCENT_60 }} />
-                      <h2 className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.4)" }}>
+                      <h2 className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: S(0.4) }}>
                         {copy.languages.title}
                       </h2>
                     </div>
@@ -162,11 +269,11 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                       {copy.languages.items.map((lang, i) => (
                         <div key={i}>
                           <div className="flex items-center justify-between text-[11px] mb-1">
-                            <span className="font-medium" style={{ color: "rgba(255,255,255,0.55)" }}>{lang.name}</span>
-                            <span className="text-[9.5px]" style={{ color: "rgba(255,255,255,0.3)" }}>{lang.level}</span>
+                            <span className="font-medium" style={{ color: S(0.55) }}>{lang.name}</span>
+                            <span className="text-[9.5px]" style={{ color: S(0.3) }}>{lang.level}</span>
                           </div>
-                          <div className="h-[3px] rounded-full overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
-                            <div className="h-full rounded-full" style={{ width: lang.name === "Italian" || lang.name === "Italiano" ? "100%" : lang.name === "English" || lang.name === "Inglese" ? "85%" : "40%", backgroundColor: ACCENT_50 }} />
+                          <div className="h-[3px] rounded-full overflow-hidden" style={{ backgroundColor: S(0.08) }}>
+                            <div className="h-full rounded-full" style={{ width: lang.name === "Italian" || lang.name === "Italiano" ? "100%" : lang.name === "English" || lang.name === "Inglese" ? "95%" : "40%", backgroundColor: ACCENT_50 }} />
                           </div>
                         </div>
                       ))}
@@ -177,15 +284,15 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                   <div>
                     <div className="flex items-center gap-2 mb-2.5">
                       <div className="w-[2.5px] h-[11px] rounded-full" style={{ backgroundColor: ACCENT_60 }} />
-                      <h2 className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.4)" }}>
+                      <h2 className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: S(0.4) }}>
                         {copy.interests.title}
                       </h2>
                     </div>
                     <div className="space-y-3">
                       {copy.interests.items.map((interest, i) => (
                         <div key={i}>
-                          <h3 className="text-[10.5px] font-medium" style={{ color: "rgba(255,255,255,0.55)" }}>{interest.name}</h3>
-                          <p className="text-[9.5px] leading-[1.7] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>{interest.description}</p>
+                          <h3 className="text-[10.5px] font-medium" style={{ color: S(0.55) }}>{interest.name}</h3>
+                          <p className="text-[9.5px] leading-[1.7] mt-0.5" style={{ color: S(0.3) }}>{interest.description}</p>
                         </div>
                       ))}
                     </div>
@@ -195,28 +302,28 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
 
               {/* ─── MAIN CONTENT ─── */}
               <div
-                className="py-8 px-7 border-2 border-l-0 rounded-r-lg"
-                style={{ backgroundColor: "#161310", borderColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.95)" }}
+                className="pt-5 pb-0 px-7 border-2 border-l-0 rounded-r-lg"
+                style={{ backgroundColor: p.mainBg, borderColor: M(0.12), color: p.mainStrong }}
               >
 
                 {/* Profile */}
                 <div className="mb-5">
                   <div className="flex items-center gap-2.5 mb-3">
                     <div className="w-[3px] h-[14px] rounded-full" style={{ backgroundColor: ACCENT }} />
-                    <h2 className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.5)" }}>
+                    <h2 className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: M(0.5) }}>
                       {copy.profile.title}
                     </h2>
                   </div>
-                  <p className="text-[12.5px] leading-[1.8]" style={{ color: "rgba(255,255,255,0.65)" }}>
+                  <p className="text-[12.5px] leading-[1.8]" style={{ color: M(0.65) }}>
                     {copy.profile.text}
                   </p>
                 </div>
 
                 {/* Experience */}
-                <div className="pt-4" style={{ borderTop: `1px solid rgba(255,255,255,0.08)` }}>
+                <div className="pt-4" style={{ borderTop: `1px solid ${M(0.08)}` }}>
                 <div className="flex items-center gap-2.5 mb-4">
                   <div className="w-[3px] h-[14px] rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <h2 className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.5)" }}>
+                  <h2 className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: M(0.5) }}>
                     {copy.experience.title}
                   </h2>
                 </div>
@@ -234,19 +341,19 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                           <div className="absolute" style={{ left: "3.5px", top: "16px", bottom: "-14px", width: "2px", backgroundColor: ACCENT_40 }} />
                         )}
                         {/* Dot */}
-                        <div className="absolute rounded-full z-10" style={{ left: "-0.5px", top: "6px", width: "10px", height: "10px", border: `2.5px solid ${ACCENT}`, backgroundColor: "#161310" }} />
+                        <div className="absolute rounded-full z-10" style={{ left: "-0.5px", top: "6px", width: "10px", height: "10px", border: `2.5px solid ${ACCENT}`, backgroundColor: p.mainBg }} />
                         <div className="flex items-baseline justify-between gap-3">
-                          <h3 className="text-[12.5px] font-bold leading-snug" style={{ color: "rgba(255,255,255,0.95)" }}>
+                          <h3 className="text-[12.5px] font-bold leading-snug" style={{ color: p.mainStrong }}>
                             {item.role}
                           </h3>
-                          <span className="text-[9.5px] whitespace-nowrap tabular-nums shrink-0 font-medium" style={{ color: "rgba(255,255,255,0.35)" }}>
+                          <span className="text-[9.5px] whitespace-nowrap tabular-nums shrink-0 font-medium" style={{ color: M(0.35) }}>
                             {item.period}
                           </span>
                         </div>
-                        <p className="text-[10px] font-semibold mt-[2px]" style={{ color: ACCENT_70 }}>
+                        <p className="text-[10px] font-semibold mt-[2px]" style={{ color: AT(0.8) }}>
                           {item.company} · {item.location}
                         </p>
-                        <p className="text-[11px] leading-[1.75] mt-1.5" style={{ color: "rgba(255,255,255,0.6)" }}>
+                        <p className="text-[11px] leading-[1.75] mt-1.5" style={{ color: M(0.6) }}>
                           {item.description}
                         </p>
                       </div>
@@ -256,10 +363,10 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                 </div>
 
                 {/* Education */}
-                <div className="mt-5 pt-5" style={{ borderTop: `1px solid rgba(255,255,255,0.08)` }}>
+                <div className="mt-5 pt-5" style={{ borderTop: `1px solid ${M(0.08)}` }}>
                 <div className="flex items-center gap-2.5 mb-4">
                   <div className="w-[3px] h-[14px] rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <h2 className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.5)" }}>
+                  <h2 className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: M(0.5) }}>
                     {copy.education.title}
                   </h2>
                 </div>
@@ -277,19 +384,19 @@ export function ResumeSection({ copy }: ResumeSectionProps) {
                           <div className="absolute" style={{ left: "3.5px", top: "16px", bottom: "-14px", width: "2px", backgroundColor: ACCENT_40 }} />
                         )}
                         {/* Dot */}
-                        <div className="absolute rounded-full z-10" style={{ left: "-0.5px", top: "6px", width: "10px", height: "10px", border: `2.5px solid ${ACCENT}`, backgroundColor: "#161310" }} />
+                        <div className="absolute rounded-full z-10" style={{ left: "-0.5px", top: "6px", width: "10px", height: "10px", border: `2.5px solid ${ACCENT}`, backgroundColor: p.mainBg }} />
                         <div className="flex items-baseline justify-between gap-3">
-                          <h3 className="text-[12.5px] font-bold leading-snug" style={{ color: "rgba(255,255,255,0.95)" }}>
+                          <h3 className="text-[12.5px] font-bold leading-snug" style={{ color: p.mainStrong }}>
                             {item.degree}
                           </h3>
-                          <span className="text-[9.5px] whitespace-nowrap tabular-nums shrink-0 font-medium" style={{ color: "rgba(255,255,255,0.35)" }}>
+                          <span className="text-[9.5px] whitespace-nowrap tabular-nums shrink-0 font-medium" style={{ color: M(0.35) }}>
                             {item.period}
                           </span>
                         </div>
-                        <p className="text-[10px] font-semibold mt-[2px]" style={{ color: ACCENT_70 }}>
+                        <p className="text-[10px] font-semibold mt-[2px]" style={{ color: AT(0.8) }}>
                           {item.institution} · {item.location}
                         </p>
-                        <p className="text-[10.5px] mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>{item.grade}</p>
+                        <p className="text-[10.5px] mt-1" style={{ color: M(0.45) }}>{item.grade}</p>
                       </div>
                     ))}
                   </div>
