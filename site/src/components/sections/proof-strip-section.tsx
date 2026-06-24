@@ -4,10 +4,10 @@ import { Counter, Reveal } from "@/lib/motion-primitives";
 import { useLandingCopyOptional } from "@/components/providers/landing-copy-provider";
 
 const metrics = [
-  { value: 15, suffix: "+", label: "Products Shipped", color: "text-foreground/90" },
-  { value: 6, suffix: "+", label: "Years Crafting Software", color: "text-foreground/90" },
-  { value: 4, suffix: "x", label: "Leadership Engagements", color: "text-foreground/90" },
-  { value: 20, suffix: "+", label: "Technologies Mastered", color: "text-foreground/90" },
+  { value: 15, suffix: "+", label: "Products Shipped" },
+  { value: 6, suffix: "+", label: "Years Crafting Software" },
+  { value: 4, suffix: "x", label: "Leadership Engagements" },
+  { value: 20, suffix: "+", label: "Technologies Mastered" },
 ];
 
 export function ProofStripSection() {
@@ -23,26 +23,22 @@ export function ProofStripSection() {
     };
   });
   return (
-    <section className="py-16 px-6 relative overflow-hidden">
-      {/* Subtle top/bottom separators — no solid bg reset */}
+    <section className="py-20 px-6 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/40 to-transparent" />
-      
-      {/* Very faint frosted overlay for slight elevation without hard cut */}
-      <div className="absolute inset-0 bg-white/[0.02]" />
-      
-      <div className="max-w-screen-2xl mx-auto relative z-10">
+
+      <div className="max-w-5xl mx-auto relative z-10">
         <Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:divide-x md:divide-white/[0.08]">
             {displayMetrics.map((metric, index) => (
-              <div key={metric.label} className="text-center">
+              <div key={metric.label} className="md:px-8 md:first:pl-0 md:last:pr-0">
                 <Counter
                   to={metric.value}
                   suffix={metric.suffix}
                   duration={2 + index * 0.2}
-                  className={`text-4xl md:text-5xl font-bold block mb-2 ${metric.color}`}
+                  className="text-6xl md:text-7xl font-bold block mb-2 text-secondary tabular-nums tracking-tight"
                 />
-                <p className="text-muted-foreground text-sm">{metric.label}</p>
+                <p className="text-muted-foreground/70 text-sm leading-snug">{metric.label}</p>
               </div>
             ))}
           </div>

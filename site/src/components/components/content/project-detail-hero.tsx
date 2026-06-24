@@ -75,7 +75,7 @@ export function ProjectDetailHero({ project }: ProjectDetailHeroProps) {
     >
       <motion.div variants={mediaVariants} className="relative flex justify-center">
         <div className="absolute -left-6 -top-6 h-32 w-32 rounded-full bg-gradient-to-br from-white/25 to-transparent blur-3xl" aria-hidden />
-        <div className="absolute right-6 bottom-0 h-48 w-48 rounded-full bg-gradient-to-br from-violet-600/50 to-transparent blur-[120px] opacity-60" aria-hidden />
+        <div className="absolute right-6 bottom-0 h-48 w-48 rounded-full bg-gradient-to-br from-secondary/30 to-transparent blur-[120px] opacity-60" aria-hidden />
         <div className="relative w-full max-w-[560px] h-[360px] overflow-hidden rounded-[38px] shadow-[0_30px_120px_rgba(0,0,0,0.45)]">
           {project.image ? (
             <motion.img

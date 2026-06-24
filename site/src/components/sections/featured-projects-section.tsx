@@ -40,7 +40,7 @@ export function FeaturedProjectsSection({ projects }: FeaturedProjectsSectionPro
           </p>
         </Reveal>
 
-        <StaggerGroup className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16 max-w-[1300px] w-full mx-auto" >
+        <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 mb-16 max-w-[1120px] w-full mx-auto" >
           {featuredProjects.map((project, index) => (
             <StaggerItem key={project.id}>
               <SharedProjectCard

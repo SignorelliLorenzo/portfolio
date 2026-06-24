@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Navbar } from "@/components/navigation/navbar"
 import { HeroSection } from "@/components/sections/hero-section"
-import { CapabilitiesSection } from "@/components/sections/capabilities-section"
 import { FeaturedProjectsSection } from "@/components/sections/featured-projects-section"
 import { ProofStripSection } from "@/components/sections/proof-strip-section"
 import { HowIWorkSection } from "@/components/sections/how-i-work-section"
@@ -68,7 +67,6 @@ export default async function Home({ params }: HomeProps) {
       <main>
         <HeroSection />
         <div className="mt-12 space-y-20 sm:space-y-24">
-          <CapabilitiesSection />
           <HowIWorkSection />
           <FeaturedProjectsSection projects={projects} />
           <ProofStripSection />

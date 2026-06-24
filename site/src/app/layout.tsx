@@ -11,11 +11,11 @@ const defaultOgImage = absoluteUrl('/opengraph-image.png')
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Lorenzo Signorelli | Full-Stack Developer & AI Enthusiast',
+    default: 'Lorenzo Signorelli | Full-Stack Developer & AI Engineer',
     template: '%s | Lorenzo Signorelli',
   },
   description:
-    'Portfolio of Lorenzo Signorelli, full-stack developer and AI enthusiast building scalable web apps and intelligent products.',
+    'Portfolio of Lorenzo Signorelli, full-stack developer and AI engineer building scalable web apps and intelligent products.',
   keywords: [
     'Lorenzo Signorelli',
     'full-stack developer',

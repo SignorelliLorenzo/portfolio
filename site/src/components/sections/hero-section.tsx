@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
 import { NeuralBackground } from "@/components/effects/neural-background";
 import { useLandingCopyOptional } from "@/components/providers/landing-copy-provider";
@@ -33,44 +33,69 @@ const contacts = [
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const portraitRef = useRef<HTMLImageElement | null>(null);
+  const [avoidEllipse, setAvoidEllipse] = useState<{ cx: number; cy: number; rx: number; ry: number } | null>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const imageParallax = useTransform(scrollYProgress, [0, 1], [0, -40]);
+
+  // Measure the portrait into a tall (figure-shaped) ellipse so the neural
+  // network keeps a clear halo around it, not a square exclusion box.
+  const computeEllipse = useCallback(() => {
+    const section = sectionRef.current;
+    const img = portraitRef.current;
+    if (!section || !img) return;
+    const s = section.getBoundingClientRect();
+    const r = img.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0) return; // image not laid out / loaded yet
+    setAvoidEllipse({
+      cx: r.left - s.left + r.width / 2,
+      cy: r.top - s.top + r.height / 2 - r.height * 0.03,
+      rx: r.width * 0.33,
+      ry: r.height * 0.44,
+    });
+  }, []);
+
+  useEffect(() => {
+    computeEllipse();
+    const raf = requestAnimationFrame(computeEllipse);
+    window.addEventListener("resize", computeEllipse);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", computeEllipse);
+    };
+  }, [computeEllipse]);
   const landingCopy = useLandingCopyOptional();
   const heroCopy = landingCopy?.copy.hero;
   const greetingTemplate = heroCopy?.greeting ?? "Hi, I'm {{name}}";
   const [greetingStart, greetingEnd] = useMemo(() => greetingTemplate.split("{{name}}"), [greetingTemplate]);
   const highlightedName = "Lorenzo Signorelli";
-  const heroTitle = heroCopy?.title ?? "Full-Stack Developer & AI Enthusiast";
+  const heroTitle = heroCopy?.title ?? "Full-stack developer and AI engineer";
   const heroSubtitle = heroCopy?.subtitle ??
-    "I build scalable web apps and AI-powered products. Based in Italy, I specialize in React, Node.js, Python, and Machine Learning. Let's create something impactful together!";
+    "I build scalable web apps and AI-powered products. Based in Italy, I specialize in React, Node.js, Python, and machine learning.";
   const heroCta = heroCopy?.cta ?? "View My Work";
 
   return (
     <section
       id="about"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center px-6 py-24 relative overflow-hidden"
+      className="min-h-[100dvh] flex items-center justify-center px-6 py-24 relative overflow-hidden"
     >
-      {/* Parallax background grid (disabled) */}
-
-      {/* Neural network background with scroll-based fade */}
+      {/* Neural network background */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        <NeuralBackground intensity={0.7} interactive className="" />
+        <NeuralBackground intensity={0.7} interactive className="" avoidEllipse={avoidEllipse} />
       </div>
 
-      {/* Bottom fade: dissolve neural network into global background */}
+      {/* Bottom fade into global background */}
       <div
         className="absolute inset-x-0 bottom-0 h-[28%] pointer-events-none z-[2]"
         style={{
           background:
-            "linear-gradient(to bottom, transparent 0%, oklch(0.10 0.03 270 / 0.6) 50%, oklch(0.09 0.025 268) 100%)",
+            "linear-gradient(to bottom, transparent 0%, oklch(0.10 0.008 60 / 0.6) 50%, oklch(0.10 0.006 60) 100%)",
         }}
       />
 
-      {/* Floating orbs (disabled) */}
-
       <div className="max-w-6xl mx-auto flex flex-col-reverse md:grid md:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Left: Text */}
+        {/* Text */}
         <motion.div
           initial="hidden"
           animate="visible"
@@ -84,28 +109,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-5xl md:text-6xl font-bold text-foreground leading-tight"
+            className="text-5xl md:text-6xl font-bold text-foreground leading-[1.1] tracking-[-0.02em]"
           >
             {greetingStart}
-            <span className="relative inline-block">
-              <span className="text-secondary drop-shadow-[0_0_20px_rgba(147,51,234,0.9)]">
-                {highlightedName}
-              </span>
-              <motion.span
-                animate={{
-                  opacity: [0.5, 0.8, 0.5],
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 text-secondary blur-sm"
-              >
-                {highlightedName}
-              </motion.span>
-            </span>
+            <span className="text-secondary">{highlightedName}</span>
             {greetingEnd}
           </motion.h1>
           <motion.p
@@ -120,12 +127,12 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-lg mx-auto md:mx-0"
+            className="text-lg text-muted-foreground max-w-lg mx-auto md:mx-0 leading-relaxed"
           >
             {heroSubtitle}
           </motion.p>
 
-          {/* Tech Stack badges */}
+          {/* Tech badges */}
           <motion.div
             initial="hidden"
             animate="visible"
@@ -148,7 +155,7 @@ export function HeroSection() {
             ))}
           </motion.div>
 
-          {/* Contacts */}
+          {/* Contact links */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -164,7 +171,7 @@ export function HeroSection() {
                   aria-label={c.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white/[0.05] hover:bg-white/[0.10] text-foreground/60 hover:text-foreground/90 rounded-full p-3 transition-all duration-300 border border-white/[0.06]"
+                  className="bg-white/[0.05] hover:bg-white/[0.10] text-foreground/60 hover:text-foreground/90 rounded-full p-3 transition-all duration-200 border border-white/[0.06] active:scale-[0.97]"
                 >
                   <Icon size={22} />
                 </a>
@@ -176,10 +183,9 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative inline-block"
           >
             <Button
-              className="relative mt-6 bg-foreground/90 text-background hover:bg-foreground/80 transition-all duration-300 shadow-sm font-medium"
+              className="mt-6 bg-foreground/90 text-background hover:bg-foreground/80 active:scale-[0.98] transition-all duration-200 shadow-sm font-medium"
               size="lg"
               onClick={() => {
                 const element = document.getElementById("projects");
@@ -191,51 +197,37 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Right: Profile image with floating + flip + ring */}
+        {/* Profile portrait: transparent cutout blended into the background */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.3 }}
-          className="flex justify-center md:justify-end w-full"
+          className="relative flex justify-center md:justify-end w-full"
           style={{ y: imageParallax }}
         >
-          <motion.div
-            animate={{
-              y: [0, -4, 0, 3, 0], // subtle floating
-              scale: [1, 1.01, 1, 1.02, 1],
+          {/* Soft amber glow grounding the figure on the dark background */}
+          <div
+            aria-hidden
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[26rem] h-[26rem] md:w-[38rem] md:h-[38rem] rounded-full blur-[90px] pointer-events-none"
+            style={{ background: "radial-gradient(circle, oklch(0.78 0.12 70 / 0.16) 0%, transparent 70%)" }}
+          />
+          <motion.img
+            ref={portraitRef}
+            src="/lorenzo-portrait.png"
+            alt="Lorenzo Signorelli"
+            onLoad={computeEllipse}
+            animate={{ y: [0, -6, 0, 4, 0] }}
+            transition={{ repeat: Infinity, duration: 9, ease: "easeInOut" }}
+            className="relative w-[22rem] md:w-[34rem] h-auto object-contain select-none pointer-events-none"
+            style={{
+              WebkitMaskImage:
+                "radial-gradient(120% 90% at 50% 38%, black 55%, transparent 92%), linear-gradient(to bottom, black 58%, transparent 95%)",
+              maskImage:
+                "radial-gradient(120% 90% at 50% 38%, black 55%, transparent 92%), linear-gradient(to bottom, black 58%, transparent 95%)",
+              WebkitMaskComposite: "source-in",
+              maskComposite: "intersect",
             }}
-            transition={{
-              repeat: Infinity,
-              duration: 8,
-              ease: "easeInOut",
-            }}
-            className="relative [perspective:1200px] md:-mr-6"
-          >
-            {/* Rotating dashed ring */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-              className="absolute -inset-6 rounded-full border-2 border-dashed border-secondary/40"
-            />
-
-            {/* Flip container */}
-            <div className="relative w-72 h-72 md:w-80 md:h-80 [transform-style:preserve-3d] group cursor-pointer">
-              {/* Front side */}
-              <div className="absolute inset-0 rounded-full border-4 border-secondary/30 shadow-2xl overflow-hidden [backface-visibility:hidden] group-hover:[transform:rotateY(180deg)] transition-transform duration-700">
-                <img
-                  src="/developer-headshot.png"
-                  alt="Lorenzo Signorelli"
-                  className="w-full h-full object-cover rounded-full"
-                />
-              </div>
-
-              {/* Back side */}
-              {/* Back side */}
-              <div className="absolute inset-0 flex items-center justify-center rounded-full border-4 border-secondary/40 shadow-2xl bg-background text-muted-foreground text-center text-base px-6 [transform:rotateY(180deg)] [backface-visibility:hidden] group-hover:[transform:rotateY(360deg)] transition-transform duration-700">
-                I don’t use libraries. <br /> I adopt problems.
-              </div>
-            </div>
-          </motion.div>
+          />
         </motion.div>
       </div>
     </section>

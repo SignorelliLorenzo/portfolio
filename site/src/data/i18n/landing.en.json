@@ -5,8 +5,8 @@
   },
   "hero": {
     "greeting": "Hi, I'm {{name}}",
-    "title": "Full-Stack Developer & AI Enthusiast",
-    "subtitle": "I build scalable web apps and AI-powered products. Based in Italy, I specialize in React, Node.js, Python, and Machine Learning. Let's create something impactful together!",
+    "title": "Full-stack developer and AI engineer",
+    "subtitle": "I build scalable web apps and AI-powered products. Based in Italy, I specialize in React, Node.js, Python, and machine learning.",
     "cta": "View My Work"
   },
   "capabilities": {
@@ -32,24 +32,24 @@
     ]
   },
   "process": {
-    "title": "How I Work",
-    "subtitle": "A structured, outcome-driven process that takes products from strategy to production.",
+    "title": "How I work",
+    "subtitle": "Every project moves through four stages, from the first conversation to production.",
     "steps": [
       {
-        "title": "Discover",
-        "description": "Align goals, stakeholders, and constraints to define requirements and clear success criteria."
+        "title": "Define",
+        "description": "Goals, users, and constraints turn into clear requirements and measurable success criteria."
       },
       {
         "title": "Build",
-        "description": "Design and build robust solutions with clean architecture, best practices, and high code quality."
+        "description": "Robust products with clean architecture, built across the full stack."
       },
       {
-        "title": "Iterate",
-        "description": "Validate through testing, feedback, and metrics; continuously improve UX, performance, and reliability."
+        "title": "Refine",
+        "description": "Tested against real usage. UX, performance, and edge cases get tightened."
       },
       {
         "title": "Ship",
-        "description": "Release to production with CI/CD, monitoring, documentation, and ongoing support."
+        "description": "Deployed to production with monitoring, documentation, and a clean handoff."
       }
     ]
   },

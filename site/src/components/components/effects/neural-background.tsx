@@ -21,11 +21,22 @@ interface Pulse {
   duration: number;
 }
 
+interface AvoidEllipse {
+  cx: number;
+  cy: number;
+  rx: number;
+  ry: number;
+}
+
 interface NeuralBackgroundProps {
   intensity?: number;
   maxNodes?: number;
   interactive?: boolean;
   className?: string;
+  /** A figure-shaped (elliptical) zone the nodes are pushed away from. */
+  avoidEllipse?: AvoidEllipse | null;
+  /** Temporarily stroke the avoid ellipse so it can be seen while tuning. */
+  debugAvoid?: boolean;
 }
 
 export function NeuralBackground({
@@ -33,16 +44,24 @@ export function NeuralBackground({
   maxNodes,
   interactive = true,
   className = "",
+  avoidEllipse = null,
+  debugAvoid = false,
 }: NeuralBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nodesRef = useRef<Node[]>([]);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
+  const avoidRef = useRef<AvoidEllipse | null>(avoidEllipse);
   const prevSizeRef = useRef({ width: 0, height: 0 });
   const animationFrameRef = useRef<number | null>(null);
   const pulsesRef = useRef<Pulse[]>([]);
   const lastFrameTimeRef = useRef<number>(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  // Keep the avoid-zone current for the animation loop without re-subscribing
+  useEffect(() => {
+    avoidRef.current = avoidEllipse;
+  }, [avoidEllipse]);
 
   // Check for reduced motion preference
   useEffect(() => {
@@ -405,6 +424,25 @@ export function NeuralBackground({
           }
         }
 
+        // Push nodes out of the figure-shaped (elliptical) avoid zone, so the
+        // portrait sits in a clear halo. Distance is measured in ellipse space,
+        // which keeps the cleared region elliptical (a non-square hitbox).
+        const avoid = avoidRef.current;
+        if (avoid && avoid.rx > 0 && avoid.ry > 0) {
+          const ndx = (node.x - avoid.cx) / avoid.rx;
+          const ndy = (node.y - avoid.cy) / avoid.ry;
+          const nd = Math.sqrt(ndx * ndx + ndy * ndy);
+          const influence = 1.12; // clear out to 1.12x the ellipse
+          if (nd < influence && nd > 0.0001) {
+            const force = (influence - nd) * 0.7;
+            const gx = node.x - avoid.cx;
+            const gy = node.y - avoid.cy;
+            const glen = Math.sqrt(gx * gx + gy * gy) || 1;
+            node.vx += (gx / glen) * force;
+            node.vy += (gy / glen) * force;
+          }
+        }
+
         // Apply velocity with damping
         node.x += node.vx;
         node.y += node.vy;
@@ -433,7 +471,7 @@ export function NeuralBackground({
         const alpha = (baseAlpha + closeness * 0.45) * intensity * breathe * hubBoost;
         const baseWidth = nodes[a].isHub || nodes[b].isHub ? 2.6 : 1.9;
         ctx.lineWidth = baseWidth + closeness * 1.05;
-        ctx.strokeStyle = `rgba(167, 139, 250, ${alpha})`;
+        ctx.strokeStyle = `rgba(196, 160, 110, ${alpha})`;
         ctx.beginPath();
         ctx.moveTo(nodes[a].x, nodes[a].y);
         ctx.lineTo(nodes[b].x, nodes[b].y);
@@ -447,7 +485,7 @@ export function NeuralBackground({
         const closeness = 1 - border.dist / borderConnectionDistance;
         const alpha = (0.12 + closeness * 0.35) * intensity * breathe;
         ctx.lineWidth = 0.9 + closeness * 1.1;
-        ctx.strokeStyle = `rgba(167, 139, 250, ${alpha})`;
+        ctx.strokeStyle = `rgba(196, 160, 110, ${alpha})`;
         ctx.beginPath();
         ctx.moveTo(node.x, node.y);
         ctx.lineTo(border.x, border.y);
@@ -477,14 +515,14 @@ export function NeuralBackground({
         const py = from.y + (to.y - from.y) * progress;
         const pulseAlpha = 0.9 * intensity;
 
-        ctx.strokeStyle = `rgba(199, 179, 255, ${pulseAlpha})`;
+        ctx.strokeStyle = `rgba(220, 190, 140, ${pulseAlpha})`;
         ctx.lineWidth = 1.2;
         ctx.beginPath();
         ctx.moveTo(px - (to.x - from.x) * 0.03, py - (to.y - from.y) * 0.03);
         ctx.lineTo(px + (to.x - from.x) * 0.03, py + (to.y - from.y) * 0.03);
         ctx.stroke();
 
-        ctx.fillStyle = `rgba(199, 179, 255, ${pulseAlpha})`;
+        ctx.fillStyle = `rgba(220, 190, 140, ${pulseAlpha})`;
         ctx.beginPath();
         ctx.arc(px, py, 2.2, 0, Math.PI * 2);
         ctx.fill();
@@ -493,7 +531,7 @@ export function NeuralBackground({
           const arrival = (progress - 0.85) / 0.15;
           const ringRadius = to.baseRadius * (1.8 + arrival * 2.5);
           const ringAlpha = 0.6 * (1 - arrival) * intensity;
-          ctx.strokeStyle = `rgba(199, 179, 255, ${ringAlpha})`;
+          ctx.strokeStyle = `rgba(220, 190, 140, ${ringAlpha})`;
           ctx.lineWidth = 1.4;
           ctx.beginPath();
           ctx.arc(to.x, to.y, ringRadius, 0, Math.PI * 2);
@@ -510,25 +548,40 @@ export function NeuralBackground({
         const coreAlpha = (node.isHub ? 0.85 : 0.62) * intensity * (0.85 + twinkle * 0.15);
 
         // Outer glow
-        ctx.fillStyle = `rgba(167, 139, 250, ${glowAlpha})`;
+        ctx.fillStyle = `rgba(196, 160, 110, ${glowAlpha})`;
         ctx.beginPath();
         ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2);
         ctx.fill();
         
         // Core node
-        ctx.fillStyle = `rgba(199, 179, 255, ${coreAlpha})`;
+        ctx.fillStyle = `rgba(220, 190, 140, ${coreAlpha})`;
         ctx.beginPath();
         ctx.arc(node.x, node.y, coreRadius, 0, Math.PI * 2);
         ctx.fill();
 
         if (node.isHub) {
-          ctx.strokeStyle = `rgba(167, 139, 250, ${0.55 * intensity})`;
+          ctx.strokeStyle = `rgba(196, 160, 110, ${0.55 * intensity})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.arc(node.x, node.y, coreRadius + 3.2, 0, Math.PI * 2);
           ctx.stroke();
         }
       });
+
+      // Debug: visualize the avoid ellipse and its influence margin
+      const dbg = avoidRef.current;
+      if (debugAvoid && dbg) {
+        ctx.strokeStyle = "rgba(255, 80, 80, 0.9)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.ellipse(dbg.cx, dbg.cy, dbg.rx, dbg.ry, 0, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.strokeStyle = "rgba(255, 80, 80, 0.35)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.ellipse(dbg.cx, dbg.cy, dbg.rx * 1.12, dbg.ry * 1.12, 0, 0, Math.PI * 2);
+        ctx.stroke();
+      }
 
       animationFrameRef.current = requestAnimationFrame(animate);
     };
@@ -564,7 +617,7 @@ export function NeuralBackground({
       const hubBoost = nodes[a].isHub || nodes[b].isHub ? 1.25 : 1;
       const maxDist = nodes[a].isHub || nodes[b].isHub ? hubConnectionDistance : baseConnectionDistance;
       const alpha = (1 - dist / maxDist) * 0.45 * intensity * hubBoost;
-      ctx.strokeStyle = `rgba(167, 139, 250, ${alpha})`;
+      ctx.strokeStyle = `rgba(196, 160, 110, ${alpha})`;
       ctx.beginPath();
       ctx.moveTo(nodes[a].x, nodes[a].y);
       ctx.lineTo(nodes[b].x, nodes[b].y);
@@ -578,7 +631,7 @@ export function NeuralBackground({
       const closeness = 1 - border.dist / borderConnectionDistance;
       const alpha = (0.12 + closeness * 0.35) * intensity;
       ctx.lineWidth = 0.9 + closeness * 1.1;
-      ctx.strokeStyle = `rgba(167, 139, 250, ${alpha})`;
+      ctx.strokeStyle = `rgba(196, 160, 110, ${alpha})`;
       ctx.beginPath();
       ctx.moveTo(node.x, node.y);
       ctx.lineTo(border.x, border.y);
@@ -593,13 +646,13 @@ export function NeuralBackground({
       const coreAlpha = (node.isHub ? 0.7 : 0.52) * intensity;
 
       // Outer glow
-      ctx.fillStyle = `rgba(167, 139, 250, ${glowAlpha})`;
+      ctx.fillStyle = `rgba(196, 160, 110, ${glowAlpha})`;
       ctx.beginPath();
       ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2);
       ctx.fill();
       
       // Core node
-      ctx.fillStyle = `rgba(199, 179, 255, ${coreAlpha})`;
+      ctx.fillStyle = `rgba(220, 190, 140, ${coreAlpha})`;
       ctx.beginPath();
       ctx.arc(node.x, node.y, coreRadius, 0, Math.PI * 2);
       ctx.fill();

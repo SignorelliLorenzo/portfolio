@@ -5,7 +5,7 @@
   },
   "hero": {
     "greeting": "Ciao, sono {{name}}",
-    "title": "Sviluppatore Full-Stack e appassionato di AI",
+    "title": "Sviluppatore full-stack e AI engineer",
     "subtitle": "Costruisco web app scalabili e prodotti alimentati dall'IA. Con base in Italia, mi specializzo in React, Node.js, Python e Machine Learning.",
     "cta": "Scopri i miei progetti"
   },
@@ -32,24 +32,24 @@
     ]
   },
   "process": {
-    "title": "Il mio metodo",
-    "subtitle": "Un processo strutturato e orientato ai risultati che porta il prodotto dalla strategia alla produzione.",
+    "title": "Come lavoro",
+    "subtitle": "Ogni progetto attraversa quattro fasi, dalla prima conversazione alla produzione.",
     "steps": [
       {
-        "title": "Analisi",
-        "description": "Allineo obiettivi, stakeholder e vincoli tecnici, definendo requisiti e criteri di successo."
+        "title": "Definizione",
+        "description": "Obiettivi, utenti e vincoli diventano requisiti chiari e criteri di successo misurabili."
       },
       {
         "title": "Sviluppo",
-        "description": "Progetto e sviluppo soluzioni robuste con architetture pulite, best practice e qualità del codice."
+        "description": "Prodotti robusti con architettura pulita, costruiti su tutto lo stack."
       },
       {
-        "title": "Iterazione",
-        "description": "Valido con test, feedback e metriche; ottimizzo UX, performance e affidabilità in modo continuo."
+        "title": "Rifinitura",
+        "description": "Testato sull'uso reale. UX, performance e casi limite vengono affinati."
       },
       {
         "title": "Rilascio",
-        "description": "Rilascio in produzione con CI/CD, monitoring, documentazione e supporto continuativo."
+        "description": "Deploy in produzione con monitoring, documentazione e un handoff pulito."
       }
     ]
   },
