@@ -22,7 +22,9 @@ export function ResumeSection({ copy, locale }: ResumeSectionProps) {
   const [paletteId, setPaletteId] = useState(PALETTES[0].id);
   const p = getPalette(paletteId);
 
-  const pdfHref = `/api/resume/pdf?locale=${locale}&palette=${paletteId}`;
+  // Pre-generated static PDFs (see scripts/gen-cv.mjs) — pixel-identical to the
+  // on-site design, served straight from /public with no server-side rendering.
+  const pdfHref = `/cv/Lorenzo_Signorelli_CV_${locale}_${paletteId}.pdf`;
   const fileName = `Lorenzo_Signorelli_CV_${locale.toUpperCase()}.pdf`;
 
   return (
