@@ -42,3 +42,5 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+# Auto-generated résumé PDFs (built via postbuild / gen:cv)
+/public/cv/

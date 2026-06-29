@@ -5,6 +5,7 @@
   "homepage": "https://signorellilorenzo.github.io/",
   "scripts": {
     "build": "next build",
+    "postbuild": "node scripts/gen-cv.mjs --serve",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
@@ -81,6 +82,7 @@
     "zod": "3.25.67"
   },
   "devDependencies": {
+    "@sparticuz/chromium": "^149.0.0",
     "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^22",
     "@types/react": "^19",

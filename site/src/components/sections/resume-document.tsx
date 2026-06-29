@@ -40,7 +40,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
 
         {/* ─── SIDEBAR ─── */}
         <div
-          className="flex flex-col border-2 rounded-l-lg pt-4 pb-4 relative overflow-hidden"
+          className="flex flex-col border-2 rounded-l-lg print:rounded-none pt-4 pb-4 relative overflow-hidden"
           style={{ backgroundColor: p.sidebarBg, color: p.sidebarStrong, borderColor: S(0.12) }}
         >
           {/* Subtle sidebar gradient accent */}
@@ -169,7 +169,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
 
         {/* ─── MAIN CONTENT ─── */}
         <div
-          className="pt-5 pb-0 px-7 border-2 border-l-0 rounded-r-lg"
+          className="pt-5 pb-0 px-7 border-2 border-l-0 rounded-r-lg print:rounded-none"
           style={{ backgroundColor: p.mainBg, borderColor: M(0.12), color: p.mainStrong }}
         >
 
