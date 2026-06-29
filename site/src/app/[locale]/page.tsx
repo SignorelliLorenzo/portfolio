@@ -7,6 +7,8 @@ import { HowIWorkSection } from "@/components/sections/how-i-work-section"
 import { Footer } from "@/components/layout/footer"
 import { fetchProjects } from "@/lib/projects"
 import type { Locale } from "@/lib/i18n"
+import { JsonLd } from "@/components/seo/json-ld"
+import { personSchema, webSiteSchema } from "@/lib/structured-data"
 
 const HOME_METADATA: Record<Locale, { title: string; description: string }> = {
   en: {
@@ -63,6 +65,7 @@ export default async function Home({ params }: HomeProps) {
 
   return (
     <div className="min-h-screen">
+      <JsonLd data={[personSchema(), webSiteSchema(locale)]} />
       <Navbar />
       <main>
         <HeroSection />

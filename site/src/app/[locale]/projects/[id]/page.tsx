@@ -9,6 +9,8 @@ import { Footer } from "@/components/layout/footer";
 import type { Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { absoluteUrl } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
+import { projectSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 
 interface ProjectPageProps {
@@ -79,8 +81,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const projectsLabel = locale === "it" ? "Progetti" : "Projects";
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#020206] via-[#05050f] to-black text-white">
+      <JsonLd
+        data={[
+          projectSchema(project, locale),
+          breadcrumbSchema([
+            { name: "Home", path: `/${locale}` },
+            { name: projectsLabel, path: `/${locale}/projects` },
+            { name: project.title, path: `/${locale}/projects/${id}` },
+          ]),
+        ]}
+      />
       <div className="relative z-10">
         <Navbar hasTranslation={project.hasItalianTranslation} />
         <ScrollToTop />

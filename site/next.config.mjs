@@ -3,6 +3,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Keep the headless-Chromium deps out of the bundle so the binary resolves at runtime
+  serverExternalPackages: ['@sparticuz/chromium', 'puppeteer-core'],
   async redirects() {
     return [
       {

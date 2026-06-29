@@ -4,7 +4,7 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n";
 import { siteUrl } from "@/lib/seo";
 
-const BASE_PATHS = ["", "/contact", "/projects"];
+const BASE_PATHS = ["", "/projects", "/resume", "/contact"];
 const PROJECTS_DIR = path.join(process.cwd(), "public", "projects");
 
 async function getProjectIds(): Promise<string[]> {

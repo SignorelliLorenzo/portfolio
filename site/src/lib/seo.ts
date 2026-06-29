@@ -1,4 +1,5 @@
-const productionSiteUrl = 'https://signorellilorenzo.github.io'
+// Canonical production domain. Override per-environment with NEXT_PUBLIC_SITE_URL.
+const productionSiteUrl = 'https://lorenzo-signorelli.is-a.dev'
 
 const envSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim()
 

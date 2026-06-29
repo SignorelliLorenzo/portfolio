@@ -2,7 +2,7 @@
 
 export function BackgroundEffect() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10">
+    <div className="pointer-events-none fixed inset-0 -z-10 print:hidden">
       {/* Base gradient: warm neutral dark */}
       <div
         className="absolute inset-0"

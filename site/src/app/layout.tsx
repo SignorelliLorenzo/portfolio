@@ -4,6 +4,8 @@ import { GeistMono } from 'geist/font/mono'
 import { ThemeProvider } from '@/components/layout/theme-provider'
 import { BackgroundEffect } from '@/components/effects/background-effect'
 import { absoluteUrl, siteUrl } from '@/lib/seo'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
 const defaultOgImage = absoluteUrl('/opengraph-image.png')
@@ -58,6 +60,14 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
   },
+  // Search-engine ownership verification. Set the token from Google Search
+  // Console (and optionally Bing) as an env var — renders nothing if unset.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { 'msvalidate.01': process.env.BING_SITE_VERIFICATION }
+      : {},
+  },
 }
 
 export default function RootLayout({
@@ -79,6 +89,8 @@ export default function RootLayout({
           <BackgroundEffect />
           {children}
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

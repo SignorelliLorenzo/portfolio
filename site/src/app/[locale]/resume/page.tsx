@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ResumeSection } from "@/components/sections/resume-section";
 import type { Locale } from "@/lib/i18n";
 import { getLandingCopy } from "@/lib/landing-copy";
+import { JsonLd } from "@/components/seo/json-ld";
+import { personSchema, profilePageSchema } from "@/lib/structured-data";
 
 const RESUME_METADATA: Record<Locale, { title: string; description: string }> = {
   en: {
@@ -56,5 +58,10 @@ export default async function ResumePage({ params }: ResumePageProps) {
   const { locale } = await params;
   const copy = getLandingCopy(locale);
 
-  return <ResumeSection copy={copy.resumePage} />;
+  return (
+    <>
+      <JsonLd data={[profilePageSchema(locale), personSchema()]} />
+      <ResumeSection copy={copy.resumePage} locale={locale} />
+    </>
+  );
 }
