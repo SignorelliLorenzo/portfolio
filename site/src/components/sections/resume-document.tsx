@@ -174,7 +174,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
         >
 
           {/* Profile */}
-          <div className="mb-5">
+          <div className="mb-4">
             <div className="flex items-center gap-2.5 mb-3">
               <div className="w-[3px] h-[14px] rounded-full" style={{ backgroundColor: ACCENT }} />
               <h2 className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: M(0.5) }}>
@@ -196,7 +196,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
           </div>
 
           <div className="relative ml-1">
-            <div className="space-y-[14px]">
+            <div className="space-y-[10px]">
               {copy.experience.items.map((item, i) => (
                 <div key={i} className="relative pl-7">
                   {/* Dashed line above first dot */}
@@ -205,7 +205,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
                   )}
                   {/* Solid line connecting to next dot */}
                   {i < copy.experience.items.length - 1 && (
-                    <div className="absolute" style={{ left: "3.5px", top: "16px", bottom: "-14px", width: "2px", backgroundColor: ACCENT_40 }} />
+                    <div className="absolute" style={{ left: "3.5px", top: "16px", bottom: "-10px", width: "2px", backgroundColor: ACCENT_40 }} />
                   )}
                   {/* Dot */}
                   <div className="absolute rounded-full z-10" style={{ left: "-0.5px", top: "6px", width: "10px", height: "10px", border: `2.5px solid ${ACCENT}`, backgroundColor: p.mainBg }} />
@@ -220,7 +220,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
                   <p className="text-[10px] font-semibold mt-[2px]" style={{ color: AT(0.8) }}>
                     {item.company} · {item.location}
                   </p>
-                  <p className="text-[11px] leading-[1.75] mt-1.5" style={{ color: M(0.6) }}>
+                  <p className="text-[11px] leading-[1.6] mt-1.5" style={{ color: M(0.6) }}>
                     {item.description}
                   </p>
                 </div>
@@ -230,7 +230,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
           </div>
 
           {/* Education */}
-          <div className="mt-5 pt-5" style={{ borderTop: `1px solid ${M(0.08)}` }}>
+          <div className="mt-4 pt-4" style={{ borderTop: `1px solid ${M(0.08)}` }}>
           <div className="flex items-center gap-2.5 mb-4">
             <div className="w-[3px] h-[14px] rounded-full" style={{ backgroundColor: ACCENT }} />
             <h2 className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: M(0.5) }}>
@@ -239,7 +239,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
           </div>
 
           <div className="relative ml-1">
-            <div className="space-y-[14px]">
+            <div className="space-y-[10px]">
               {copy.education.items.map((item, i) => (
                 <div key={i} className="relative pl-7">
                   {/* Dashed line above first dot */}
@@ -248,7 +248,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
                   )}
                   {/* Solid line connecting to next dot */}
                   {i < copy.education.items.length - 1 && (
-                    <div className="absolute" style={{ left: "3.5px", top: "16px", bottom: "-14px", width: "2px", backgroundColor: ACCENT_40 }} />
+                    <div className="absolute" style={{ left: "3.5px", top: "16px", bottom: "-10px", width: "2px", backgroundColor: ACCENT_40 }} />
                   )}
                   {/* Dot */}
                   <div className="absolute rounded-full z-10" style={{ left: "-0.5px", top: "6px", width: "10px", height: "10px", border: `2.5px solid ${ACCENT}`, backgroundColor: p.mainBg }} />
