@@ -14,7 +14,7 @@ import puppeteer from "puppeteer-core";
 
 const OUT_DIR = path.join(process.cwd(), "public", "cv");
 const LOCALES = ["en", "it"];
-const PALETTES = ["bronze", "daylight", "midnight"];
+const PALETTES = ["bronze", "daylight", "midnight", "print"];
 const SERVE = process.argv.includes("--serve");
 const PORT = Number(process.env.PORT) || 4399;
 const BASE_URL = SERVE ? `http://localhost:${PORT}` : process.env.BASE_URL ?? "http://localhost:3000";

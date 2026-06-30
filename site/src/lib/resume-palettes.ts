@@ -11,6 +11,8 @@ export interface Palette {
   mainBg: string;
   mainFg: RGB;
   mainStrong: string;
+  /** Grayscale/print theme — also desaturates the headshot. */
+  mono?: boolean;
 }
 
 export const PALETTES: Palette[] = [
@@ -49,6 +51,19 @@ export const PALETTES: Palette[] = [
     mainBg: "#10151f",
     mainFg: [255, 255, 255],
     mainStrong: "rgba(255,255,255,0.95)",
+  },
+  {
+    id: "print",
+    label: "Print (B&W)",
+    accent: [92, 92, 92],
+    accentText: [38, 38, 38],
+    sidebarBg: "#f3f3f3",
+    sidebarFg: [38, 38, 38],
+    sidebarStrong: "#0f0f0f",
+    mainBg: "#ffffff",
+    mainFg: [38, 38, 38],
+    mainStrong: "#0f0f0f",
+    mono: true,
   },
 ];
 
