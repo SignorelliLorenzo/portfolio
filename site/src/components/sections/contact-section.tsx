@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/lib/motion-primitives";
 import { FaEnvelope, FaUser, FaBuilding, FaPaperPlane } from "react-icons/fa";
 import type { LandingCopy } from "@/lib/landing-copy";
+import { BookCallButton } from "@/components/contact/book-call-button";
+
+const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL;
 
 interface FormData {
   name: string;
@@ -294,6 +297,19 @@ export function ContactSection({ copy }: ContactPageClientProps) {
               )}
             </form>
           </motion.div>
+
+          {/* Book a call */}
+          {CALENDLY_URL && (
+            <Reveal className="mt-10 flex flex-col items-center gap-3">
+              <div className="flex items-center gap-4 w-full max-w-xs text-muted-foreground/60">
+                <span className="h-px flex-1 bg-border" />
+                <span className="text-xs uppercase tracking-widest">{copy.bookCallDivider}</span>
+                <span className="h-px flex-1 bg-border" />
+              </div>
+              <p className="text-muted-foreground">{copy.bookCallPrompt}</p>
+              <BookCallButton url={CALENDLY_URL} label={copy.bookCall} />
+            </Reveal>
+          )}
 
           {/* Additional info */}
           <Reveal className="mt-12 text-center">

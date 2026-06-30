@@ -115,7 +115,10 @@
       }
     },
     "footerPrompt": "Prefer email?",
-    "footerEmail": "signorelli.lorenzo.business@gmail.com"
+    "footerEmail": "signorelli.lorenzo.business@gmail.com",
+    "bookCallDivider": "or",
+    "bookCallPrompt": "Prefer to talk it through? Grab a time that works for you.",
+    "bookCall": "Book a call"
   },
   "resumePage": {
     "title": "Resume",
