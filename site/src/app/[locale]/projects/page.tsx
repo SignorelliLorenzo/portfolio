@@ -124,10 +124,10 @@ export default function ProjectsPage() {
   const showTagSuggestions = isSearchFocused && tagSuggestions.length > 0;
 
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      
-      <main className="pt-32 pb-24 px-6">
+
+      <main className="flex-1 pt-32 pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -28,9 +28,9 @@ export function ResumeSection({ copy, locale }: ResumeSectionProps) {
   const fileName = `Lorenzo_Signorelli_CV_${locale.toUpperCase()}.pdf`;
 
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="pt-24 pb-12 px-4 sm:px-6">
+      <main className="flex-1 pt-24 pb-12 px-4 sm:px-6">
         <div className="w-[210mm] max-w-full mx-auto">
 
           <Reveal className="flex flex-wrap items-center justify-between gap-3 mb-3 print:hidden">

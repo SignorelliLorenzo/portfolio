@@ -64,10 +64,10 @@ export default async function Home({ params }: HomeProps) {
   const projects = await fetchProjects(locale);
 
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <JsonLd data={[personSchema(), webSiteSchema(locale)]} />
       <Navbar />
-      <main>
+      <main className="flex-1">
         <HeroSection />
         <div className="mt-12 space-y-20 sm:space-y-24">
           <HowIWorkSection />
