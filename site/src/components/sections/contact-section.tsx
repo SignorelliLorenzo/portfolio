@@ -140,8 +140,8 @@ export function ContactSection({ copy }: ContactPageClientProps) {
     <div className="min-h-screen">
       <Navbar />
       <main className="pt-24 pb-10 px-6">
-        <div className="max-w-3xl mx-auto">
-          <Reveal className="text-center mb-6">
+        <div className="max-w-4xl mx-auto">
+          <Reveal className="text-center mb-6 max-w-3xl mx-auto">
             <h1 className="text-3xl md:text-5xl font-bold mb-2">
               {copy.title} <span className="text-secondary">{copy.titleAccent}</span>
             </h1>
@@ -205,7 +205,7 @@ export function ContactSection({ copy }: ContactPageClientProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={panelTransition}
-                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-5 sm:p-7"
+                className="mx-auto w-full max-w-3xl bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-5 sm:p-7"
               >
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">

@@ -33,12 +33,12 @@ export function CalEmbed({ calLink }: CalEmbedProps) {
   }, []);
 
   return (
-    // Narrow container makes Cal.com reflow to its compact vertical layout
-    // (calendar on top, time slots below) instead of the wide side-by-side view.
-    <div className="mx-auto w-full max-w-sm rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden">
+    // Fills its (wide) panel so Cal.com keeps the horizontal side-by-side
+    // layout (calendar + time column). Height kept short to stay compact.
+    <div className="w-full rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden">
       <Cal
         calLink={calLink}
-        style={{ width: "100%", height: "100%", minHeight: "600px", overflow: "scroll" }}
+        style={{ width: "100%", height: "100%", minHeight: "460px", overflow: "scroll" }}
         config={{ theme: "dark", layout: "month_view" }}
       />
     </div>
