@@ -5,8 +5,8 @@
   },
   "hero": {
     "greeting": "Ciao, sono {{name}}",
-    "title": "Sviluppatore full-stack e AI engineer",
-    "subtitle": "Costruisco web app scalabili e prodotti alimentati dall'IA. Con base in Italia, mi specializzo in React, Node.js, Python e Machine Learning.",
+    "title": "Ti aiuto a lanciare prodotti AI e sistemi scalabili.",
+    "subtitle": "Dagli assistenti agentici e le pipeline di computer vision al full-stack che li regge, dal prototipo alla produzione. Di recente per Toyota e Regione Lombardia.",
     "cta": "Scopri i miei progetti"
   },
   "capabilities": {

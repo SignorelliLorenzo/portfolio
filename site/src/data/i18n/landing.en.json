@@ -5,8 +5,8 @@
   },
   "hero": {
     "greeting": "Hi, I'm {{name}}",
-    "title": "Full-stack developer and AI engineer",
-    "subtitle": "I build scalable web apps and AI-powered products. Based in Italy, I specialize in React, Node.js, Python, and machine learning.",
+    "title": "I help you ship AI products and scalable systems.",
+    "subtitle": "From agentic assistants and computer-vision pipelines to the full-stack behind them, taken from prototype to production. Recently for Toyota and Regione Lombardia.",
     "cta": "View My Work"
   },
   "capabilities": {
