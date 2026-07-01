@@ -50,7 +50,7 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
           <div className="px-5 pt-5 pb-4 flex flex-col items-center text-center relative" style={{ borderBottom: `1px solid ${S(0.06)}` }}>
             <div className="w-[130px] h-[130px] rounded-xl overflow-hidden mb-3" style={{ boxShadow: `0 0 0 2.5px ${ACCENT_50}, 0 8px 24px -8px rgba(0,0,0,0.6)` }}>
               <img
-                src="/developer-headshot.png"
+                src="/developer-headshot.jpg"
                 alt="Lorenzo Signorelli"
                 className="w-full h-full object-cover"
               />

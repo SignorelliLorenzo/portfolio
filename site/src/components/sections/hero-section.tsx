@@ -213,7 +213,7 @@ export function HeroSection() {
           />
           <motion.img
             ref={portraitRef}
-            src="/lorenzo-portrait.png"
+            src="/lorenzo-portrait.webp"
             alt="Lorenzo Signorelli"
             onLoad={computeEllipse}
             animate={{ y: [0, -6, 0, 4, 0] }}

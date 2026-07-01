@@ -10,6 +10,7 @@ import {
   type Transition,
 } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useState, type KeyboardEvent, type MouseEvent, type PointerEvent, type SyntheticEvent } from "react";
 import { FaArrowRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
@@ -250,11 +251,13 @@ export function ProjectCard({ project, href, ctaLabel, index = 0, layout }: Proj
         {/* Cover image, flush to the card edges */}
         <div className="relative aspect-[16/11] overflow-hidden rounded-t-2xl" style={{ transform: "translateZ(0)" }}>
           {project.image ? (
-            <img
+            <Image
               src={project.image}
               alt={project.title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               onLoad={handleImageLoad}
-              className="absolute inset-0 h-full w-full select-none object-cover transition-transform duration-[800ms] ease-out pointer-events-none group-hover:scale-[1.05]"
+              className="select-none object-cover transition-transform duration-[800ms] ease-out pointer-events-none group-hover:scale-[1.05]"
             />
           ) : (
             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]" />

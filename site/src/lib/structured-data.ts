@@ -20,7 +20,7 @@ export function personSchema() {
     givenName: "Lorenzo",
     familyName: "Signorelli",
     url: siteUrl,
-    image: absoluteUrl("/developer-headshot.png"),
+    image: absoluteUrl("/developer-headshot.jpg"),
     jobTitle: "AI Software Engineer",
     description:
       "Full-Stack Developer & AI Engineer building agentic AI systems, computer vision pipelines and high-performance web applications.",
