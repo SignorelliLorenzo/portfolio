@@ -118,7 +118,25 @@
     "footerEmail": "signorelli.lorenzo.business@gmail.com",
     "bookCallDivider": "oppure",
     "bookCallPrompt": "Preferisci parlarne a voce? Scegli l'orario che preferisci.",
-    "bookCall": "Prenota una call"
+    "bookCall": "Prenota una call",
+    "scheduler": {
+      "heading": "Prenota un incontro",
+      "intro": "Scegli l'orario che preferisci — riceverai un invito con link video via email.",
+      "dateLabel": "Scegli il giorno",
+      "timeLabel": "Orari disponibili",
+      "loading": "Carico gli orari…",
+      "noSlots": "Nessun orario disponibile in questo giorno — provane un altro.",
+      "nameLabel": "Il tuo nome",
+      "emailLabel": "La tua email",
+      "topicLabel": "Di cosa vuoi parlare? (facoltativo)",
+      "submit": "Prenota",
+      "booking": "Prenotazione…",
+      "successTitle": "Prenotato!",
+      "successBody": "L'invito al calendario sta arrivando nella tua casella email.",
+      "error": "Qualcosa è andato storto. Riprova.",
+      "taken": "Questo orario è appena stato preso — scegline un altro.",
+      "tzNote": "Orari mostrati in {tz}."
+    }
   },
   "resumePage": {
     "title": "Curriculum",

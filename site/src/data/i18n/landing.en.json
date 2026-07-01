@@ -118,7 +118,25 @@
     "footerEmail": "signorelli.lorenzo.business@gmail.com",
     "bookCallDivider": "or",
     "bookCallPrompt": "Prefer to talk it through? Grab a time that works for you.",
-    "bookCall": "Book a call"
+    "bookCall": "Book a call",
+    "scheduler": {
+      "heading": "Book a meeting",
+      "intro": "Pick a slot that works for you — you'll get a calendar invite with a video link by email.",
+      "dateLabel": "Choose a day",
+      "timeLabel": "Available times",
+      "loading": "Loading times…",
+      "noSlots": "No times available on this day — try another.",
+      "nameLabel": "Your name",
+      "emailLabel": "Your email",
+      "topicLabel": "What would you like to discuss? (optional)",
+      "submit": "Book meeting",
+      "booking": "Booking…",
+      "successTitle": "You're booked!",
+      "successBody": "A calendar invite is on its way to your inbox.",
+      "error": "Something went wrong. Please try again.",
+      "taken": "That time was just taken — please pick another.",
+      "tzNote": "Times shown in {tz}."
+    }
   },
   "resumePage": {
     "title": "Resume",

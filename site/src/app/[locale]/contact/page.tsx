@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactSection } from "@/components/sections/contact-section";
 import type { Locale } from "@/lib/i18n";
 import { getLandingCopy } from "@/lib/landing-copy";
+import { isCalendarConfigured } from "@/lib/google-calendar";
 
 const CONTACT_METADATA: Record<Locale, { title: string; description: string }> = {
   en: {
@@ -56,5 +57,5 @@ export default async function ContactPage({ params }: ContactPageProps) {
   const { locale } = await params;
   const copy = getLandingCopy(locale);
 
-  return <ContactSection copy={copy.contactPage} />;
+  return <ContactSection copy={copy.contactPage} bookingEnabled={isCalendarConfigured()} />;
 }
