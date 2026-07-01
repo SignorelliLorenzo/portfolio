@@ -53,7 +53,6 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
                 src="/developer-headshot.png"
                 alt="Lorenzo Signorelli"
                 className="w-full h-full object-cover"
-                style={p.mono ? { filter: "grayscale(100%)" } : undefined}
               />
             </div>
             <h1 className="text-[19px] font-bold leading-[1.2] tracking-[-0.02em]" style={{ color: p.sidebarStrong }}>

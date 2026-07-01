@@ -11,8 +11,6 @@ export interface Palette {
   mainBg: string;
   mainFg: RGB;
   mainStrong: string;
-  /** Grayscale/print theme — also desaturates the headshot. */
-  mono?: boolean;
 }
 
 export const PALETTES: Palette[] = [
@@ -63,7 +61,6 @@ export const PALETTES: Palette[] = [
     mainBg: "#ffffff",
     mainFg: [38, 38, 38],
     mainStrong: "#0f0f0f",
-    mono: true,
   },
 ];
 
