@@ -36,7 +36,7 @@ export function CalEmbed({ calLink }: CalEmbedProps) {
     <div className="rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden">
       <Cal
         calLink={calLink}
-        style={{ width: "100%", height: "100%", minHeight: "620px", overflow: "scroll" }}
+        style={{ width: "100%", height: "100%", minHeight: "560px", overflow: "scroll" }}
         config={{ theme: "dark", layout: "month_view" }}
       />
     </div>

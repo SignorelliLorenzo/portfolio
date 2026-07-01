@@ -1,7 +1,8 @@
 {
   "nav": {
     "about": "Chi sono",
-    "resume": "Curriculum"
+    "resume": "Curriculum",
+    "contact": "Contatti"
   },
   "hero": {
     "greeting": "Ciao, sono {{name}}",

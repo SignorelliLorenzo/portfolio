@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { useLandingCopyOptional } from "@/components/providers/landing-copy-provider";
-
-const EMAIL = "signorelli.lorenzo.business@gmail.com";
 
 const SOCIALS = [
   { href: "https://github.com/SignorelliLorenzo", label: "GitHub", Icon: FaGithub },
@@ -25,60 +23,36 @@ export function Footer() {
   ];
 
   return (
-    <footer id="contact" className="relative border-t border-border/30 w-full">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+    <footer className="border-t border-border/40 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col-reverse items-center gap-4 sm:flex-row sm:justify-between">
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} · {footerCopy?.rights ?? "All rights reserved."}
+        </p>
 
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          {/* Identity + email */}
-          <div>
-            <p className="text-lg font-semibold text-foreground">Lorenzo Signorelli</p>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="mt-2 inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              <FaEnvelope size={14} />
-              {EMAIL}
+              {l.label}
+            </Link>
+          ))}
+          <span className="mx-1 hidden h-4 w-px bg-border sm:inline-block" aria-hidden />
+          {SOCIALS.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Icon size={18} />
             </a>
-          </div>
-
-          {/* Links + social */}
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
-            <nav className="flex flex-wrap gap-x-6 gap-y-2">
-              {links.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="flex gap-3">
-              {SOCIALS.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-10 h-10 rounded-lg bg-white/[0.05] border border-white/[0.06] flex items-center justify-center text-foreground/70 hover:bg-white/[0.10] hover:text-foreground transition-all"
-                >
-                  <Icon size={18} />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="w-full border-t border-border/60">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Lorenzo Signorelli. {footerCopy?.rights ?? "All rights reserved."}</p>
-          <p>Bergamo, Italy</p>
-        </div>
+          ))}
+        </nav>
       </div>
     </footer>
   );

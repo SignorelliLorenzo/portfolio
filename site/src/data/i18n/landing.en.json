@@ -1,7 +1,8 @@
 {
   "nav": {
     "about": "About",
-    "resume": "Resume"
+    "resume": "Resume",
+    "contact": "Contact"
   },
   "hero": {
     "greeting": "Hi, I'm {{name}}",

@@ -51,6 +51,12 @@ export function Navbar({ hasTranslation = true }: NavbarProps) {
             >
               {navCopy?.resume ?? "Resume"}
             </Link>
+            <Link
+              href={`/${locale}/contact`}
+              className="font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+            >
+              {navCopy?.contact ?? (locale === "it" ? "Contatti" : "Contact")}
+            </Link>
             <LanguageSwitcher hasTranslation={hasTranslation} />
           </div>
         </div>
