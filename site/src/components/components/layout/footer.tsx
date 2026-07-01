@@ -26,7 +26,7 @@ export function Footer() {
     <footer className="border-t border-border/40 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col-reverse items-center gap-4 sm:flex-row sm:justify-between">
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} · {footerCopy?.rights ?? "All rights reserved."}
+          © {new Date().getFullYear()} Lorenzo Signorelli. {footerCopy?.rights ?? "All rights reserved."}
         </p>
 
         <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">

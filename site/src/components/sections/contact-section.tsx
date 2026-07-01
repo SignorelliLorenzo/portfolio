@@ -137,9 +137,9 @@ export function ContactSection({ copy }: ContactPageClientProps) {
   const showCall = canBook && mode === "call";
 
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="pt-24 pb-10 px-6">
+      <main className="flex-1 pt-24 pb-10 px-6">
         <div className="max-w-4xl mx-auto">
           <Reveal className="text-center mb-6 max-w-3xl mx-auto">
             <h1 className="text-3xl md:text-5xl font-bold mb-2">
