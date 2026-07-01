@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/lib/motion-primitives";
 import { FaEnvelope, FaUser, FaBuilding, FaPaperPlane } from "react-icons/fa";
 import type { LandingCopy } from "@/lib/landing-copy";
-import { MeetingScheduler } from "@/components/contact/meeting-scheduler";
+import { CalEmbed } from "@/components/contact/cal-embed";
+
+const CALCOM_LINK = process.env.NEXT_PUBLIC_CALCOM_LINK;
 
 interface FormData {
   name: string;
@@ -29,10 +31,9 @@ type ContactPageCopy = LandingCopy["contactPage"];
 
 interface ContactPageClientProps {
   copy: ContactPageCopy;
-  bookingEnabled?: boolean;
 }
 
-export function ContactSection({ copy, bookingEnabled = false }: ContactPageClientProps) {
+export function ContactSection({ copy }: ContactPageClientProps) {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -297,15 +298,19 @@ export function ContactSection({ copy, bookingEnabled = false }: ContactPageClie
             </form>
           </motion.div>
 
-          {/* Book a meeting (only when the calendar is connected) */}
-          {bookingEnabled && (
+          {/* Book a meeting (only when a Cal.com link is configured) */}
+          {CALCOM_LINK && (
             <Reveal className="mt-10">
               <div className="flex items-center gap-4 mb-6 text-muted-foreground/60">
                 <span className="h-px flex-1 bg-border" />
                 <span className="text-xs uppercase tracking-widest">{copy.bookCallDivider}</span>
                 <span className="h-px flex-1 bg-border" />
               </div>
-              <MeetingScheduler copy={copy.scheduler} />
+              <div className="flex items-center gap-2.5 mb-1">
+                <h2 className="text-2xl font-bold">{copy.scheduler.heading}</h2>
+              </div>
+              <p className="text-muted-foreground mb-6">{copy.scheduler.intro}</p>
+              <CalEmbed calLink={CALCOM_LINK} />
             </Reveal>
           )}
 

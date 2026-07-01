@@ -16,12 +16,12 @@
     "seed": "npm --prefix ..\\publish run seed",
     "setup:contact": "tsx scripts/create-contact-table.ts",
     "gen:cv": "node scripts/gen-cv.mjs",
-    "auth:google": "node scripts/google-auth.mjs",
     "sync-markdown": "npm --prefix ..\\publish run sync-markdown",
     "setup:assets": "npm --prefix ..\\publish run setup:assets",
     "publish": "npm --prefix ..\\publish run publish --"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@hookform/resolvers": "^3.10.0",
     "@neondatabase/serverless": "^0.10.3",
     "@radix-ui/react-accordion": "1.2.2",
@@ -61,10 +61,8 @@
     "embla-carousel-react": "8.5.1",
     "framer-motion": "^12.23.12",
     "geist": "^1.3.1",
-    "google-auth-library": "^10.9.0",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "luxon": "^3.7.2",
     "next": "15.5.10",
     "next-themes": "^0.4.6",
     "react": "^18.3.1",
@@ -87,7 +85,6 @@
   "devDependencies": {
     "@sparticuz/chromium": "^149.0.0",
     "@tailwindcss/postcss": "^4.1.9",
-    "@types/luxon": "^3.7.2",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
