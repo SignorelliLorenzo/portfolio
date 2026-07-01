@@ -7,7 +7,21 @@ interface ContactFormData {
   company?: string;
   subject?: string;
   message: string;
+  honeypot?: string;
+  startedAt?: number;
 }
+
+// Common throwaway/disposable email providers — reject to cut fake addresses.
+const DISPOSABLE_EMAIL_DOMAINS = new Set([
+  "mailinator.com", "guerrillamail.com", "guerrillamail.info", "sharklasers.com",
+  "10minutemail.com", "tempmail.com", "temp-mail.org", "throwawaymail.com",
+  "yopmail.com", "getnada.com", "trashmail.com", "dispostable.com", "fakeinbox.com",
+  "maildrop.cc", "mailnesia.com", "spam4.me", "mohmal.com", "emailondeck.com",
+]);
+
+// Bots submit instantly; a human takes at least a few seconds.
+const MIN_FILL_MS = 3000;
+const MAX = { name: 100, email: 200, company: 150, subject: 200, message: 5000 };
 
 const RATE_LIMIT_MAP = new Map<string, { count: number; timestamp: number }>();
 const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour
@@ -59,7 +73,18 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, email, company, subject, message } = body as ContactFormData;
+    const { name, email, company, subject, message, honeypot, startedAt } = body as ContactFormData;
+
+    // Honeypot: real users never fill this hidden field. Pretend success so
+    // bots don't learn they were caught.
+    if (honeypot) {
+      return NextResponse.json({ success: true, message: "Message received successfully" }, { status: 200 });
+    }
+
+    // Time-to-fill trap: submissions faster than a human are almost always bots.
+    if (typeof startedAt === "number" && Number.isFinite(startedAt) && Date.now() - startedAt < MIN_FILL_MS) {
+      return NextResponse.json({ success: true, message: "Message received successfully" }, { status: 200 });
+    }
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -78,6 +103,35 @@ export async function POST(request: NextRequest) {
     if (message.length < 10) {
       return NextResponse.json(
         { error: "Message too short" },
+        { status: 400 }
+      );
+    }
+
+    // Length caps — block oversized payloads / field stuffing.
+    if (
+      name.length > MAX.name ||
+      email.length > MAX.email ||
+      message.length > MAX.message ||
+      (company && company.length > MAX.company) ||
+      (subject && subject.length > MAX.subject)
+    ) {
+      return NextResponse.json({ error: "Input too long" }, { status: 400 });
+    }
+
+    // Reject disposable/throwaway email domains.
+    const domain = email.split("@")[1]?.toLowerCase();
+    if (domain && DISPOSABLE_EMAIL_DOMAINS.has(domain)) {
+      return NextResponse.json(
+        { error: "Please use a permanent email address" },
+        { status: 400 }
+      );
+    }
+
+    // Link-flood heuristic: spam messages are usually stuffed with URLs.
+    const linkCount = (message.match(/https?:\/\//gi) || []).length;
+    if (linkCount > 3) {
+      return NextResponse.json(
+        { error: "Message flagged as spam" },
         { status: 400 }
       );
     }

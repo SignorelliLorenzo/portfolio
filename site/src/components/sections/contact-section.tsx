@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Navbar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -40,6 +40,12 @@ export function ContactSection({ copy }: ContactPageClientProps) {
   const reduceMotion = useReducedMotion();
 
   const [mode, setMode] = useState<Mode>("message");
+
+  // When the form was first shown — used server-side to reject instant (bot) submits.
+  const startedAtRef = useRef<number>(0);
+  useEffect(() => {
+    startedAtRef.current = Date.now();
+  }, []);
 
   // Open the "book a call" tab when linked with #book (e.g. the hero CTA).
   useEffect(() => {
@@ -101,6 +107,8 @@ export function ContactSection({ copy }: ContactPageClientProps) {
           company: formData.company,
           subject: formData.subject,
           message: formData.message,
+          honeypot: formData.honeypot,
+          startedAt: startedAtRef.current,
         }),
       });
 
