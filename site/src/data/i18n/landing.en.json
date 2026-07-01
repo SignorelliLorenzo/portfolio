@@ -5,7 +5,7 @@
   },
   "hero": {
     "greeting": "Hi, I'm {{name}}",
-    "title": "I build AI products and scalable systems that ship.",
+    "title": "I ship production-grade AI products and scalable systems.",
     "subtitle": "From agentic assistants and computer-vision pipelines to the full-stack behind them, taken from prototype to production. Recently for Toyota and Regione Lombardia.",
     "cta": "View My Work"
   },
