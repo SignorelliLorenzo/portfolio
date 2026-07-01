@@ -6,8 +6,8 @@
   "hero": {
     "greeting": "Ciao, sono {{name}}",
     "title": "Realizzo prodotti AI pronti alla produzione e sistemi scalabili.",
-    "subtitle": "Dagli assistenti agentici e le pipeline di computer vision al full-stack che li regge, dal prototipo alla produzione per grandi attori del settore.",
-    "cta": "Scopri i miei progetti"
+    "subtitle": "Dagli assistenti agentici e le pipeline di computer vision al full-stack che li regge, dal prototipo alla produzione per grandi attori.",
+    "cta": "Prenota una call"
   },
   "capabilities": {
     "title": "Cosa realizzo",

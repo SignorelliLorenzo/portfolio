@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Navbar } from "@/components/navigation/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -40,6 +40,13 @@ export function ContactSection({ copy }: ContactPageClientProps) {
   const reduceMotion = useReducedMotion();
 
   const [mode, setMode] = useState<Mode>("message");
+
+  // Open the "book a call" tab when linked with #book (e.g. the hero CTA).
+  useEffect(() => {
+    if (canBook && typeof window !== "undefined" && window.location.hash === "#book") {
+      setMode("call");
+    }
+  }, [canBook]);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",

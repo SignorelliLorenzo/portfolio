@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 import { NeuralBackground } from "@/components/effects/neural-background";
 import { useLandingCopyOptional } from "@/components/providers/landing-copy-provider";
 
@@ -64,7 +65,9 @@ export function HeroSection() {
       window.removeEventListener("resize", computeEllipse);
     };
   }, [computeEllipse]);
+  const router = useRouter();
   const landingCopy = useLandingCopyOptional();
+  const locale = landingCopy?.locale ?? "en";
   const heroCopy = landingCopy?.copy.hero;
   const greetingTemplate = heroCopy?.greeting ?? "Hi, I'm {{name}}";
   const [greetingStart, greetingEnd] = useMemo(() => greetingTemplate.split("{{name}}"), [greetingTemplate]);
@@ -187,10 +190,7 @@ export function HeroSection() {
             <Button
               className="mt-6 bg-foreground/90 text-background hover:bg-foreground/80 active:scale-[0.98] transition-all duration-200 shadow-sm font-medium"
               size="lg"
-              onClick={() => {
-                const element = document.getElementById("projects");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => router.push(`/${locale}/contact#book`)}
             >
               {heroCta}
             </Button>
