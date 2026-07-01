@@ -1,6 +1,8 @@
 import { DateTime } from "luxon";
 import { BOOKING, candidateSlots, overlaps } from "@/lib/booking-config";
-import { createEvent, getBusyIntervals, isCalendarConfigured } from "@/lib/google-calendar";
+import { createHold, getBusyIntervals, isCalendarConfigured } from "@/lib/google-calendar";
+import { signToken } from "@/lib/booking-token";
+import { sendApprovalRequest } from "@/lib/booking-email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,6 +10,7 @@ export const dynamic = "force-dynamic";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // POST /api/book  { start, name, email, topic?, honeypot? }
+// Places a tentative hold and emails the owner an approve/decline link.
 export async function POST(req: Request) {
   if (!isCalendarConfigured()) {
     return Response.json({ error: "Booking is not available right now." }, { status: 503 });
@@ -22,8 +25,7 @@ export async function POST(req: Request) {
 
   const { start, name, email, topic, honeypot } = body as Record<string, string | undefined>;
 
-  // Silently accept bots (honeypot) without booking anything.
-  if (honeypot) return Response.json({ ok: true });
+  if (honeypot) return Response.json({ ok: true }); // silently drop bots
 
   if (
     typeof start !== "string" ||
@@ -56,17 +58,38 @@ export async function POST(req: Request) {
       return Response.json({ error: "That time was just taken — pick another." }, { status: 409 });
     }
 
-    const event = await createEvent({
+    const cleanName = name.trim();
+    const cleanEmail = email.trim();
+    const cleanTopic = typeof topic === "string" ? topic.trim() : undefined;
+
+    // Hold the slot (tentative) so nobody else can grab it while pending.
+    const hold = await createHold({
       startISO: slot.start,
       endISO: slot.end,
-      attendeeEmail: email.trim(),
-      attendeeName: name.trim(),
-      topic: typeof topic === "string" ? topic.trim() : undefined,
+      attendeeEmail: cleanEmail,
+      attendeeName: cleanName,
+      topic: cleanTopic,
     });
 
-    return Response.json({ ok: true, htmlLink: event.htmlLink, start: slot.start });
+    // Build signed approve/decline links back to this deployment.
+    const host = req.headers.get("host") ?? "";
+    const proto = req.headers.get("x-forwarded-proto") ?? (host.includes("localhost") ? "http" : "https");
+    const origin = `${proto}://${host}`;
+    const tok = signToken({ eventId: hold.id, name: cleanName, email: cleanEmail, start: slot.start });
+    const q = `token=${encodeURIComponent(tok)}`;
+
+    await sendApprovalRequest({
+      name: cleanName,
+      email: cleanEmail,
+      topic: cleanTopic,
+      whenLabel: startDt.setLocale("en").toFormat("cccc d LLLL yyyy, HH:mm"),
+      approveUrl: `${origin}/api/book/approve?${q}`,
+      declineUrl: `${origin}/api/book/decline?${q}`,
+    });
+
+    return Response.json({ ok: true, pending: true });
   } catch (err) {
     console.error("[book] failed:", err);
-    return Response.json({ error: "Could not create the meeting. Please try again." }, { status: 500 });
+    return Response.json({ error: "Could not submit the request. Please try again." }, { status: 500 });
   }
 }

@@ -47,7 +47,7 @@ export async function getBusyIntervals(timeMinISO: string, timeMaxISO: string): 
   return data.calendars?.[BOOKING.calendarId]?.busy ?? [];
 }
 
-export interface CreateEventInput {
+export interface HoldInput {
   startISO: string;
   endISO: string;
   attendeeEmail: string;
@@ -55,27 +55,54 @@ export interface CreateEventInput {
   topic?: string;
 }
 
-export async function createEvent(input: CreateEventInput): Promise<{ id: string; htmlLink: string }> {
+const cal = () => encodeURIComponent(BOOKING.calendarId);
+
+/**
+ * Places a tentative "hold" on the calendar (no guest invite yet). Being on the
+ * calendar makes the slot show as busy, so it can't be double-booked while the
+ * request awaits approval.
+ */
+export async function createHold(input: HoldInput): Promise<{ id: string }> {
   const token = await accessToken();
   const description = [
     input.topic ? `Topic: ${input.topic}` : null,
-    `Requested by ${input.attendeeName} <${input.attendeeEmail}>`,
+    `Pending approval — requested by ${input.attendeeName} <${input.attendeeEmail}>`,
     "Booked via lorenzo-signorelli.is-a.dev",
   ]
     .filter(Boolean)
     .join("\n");
 
+  const res = await fetch(`${API}/calendars/${cal()}/events`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      summary: `(Pending) Intro call — ${input.attendeeName}`,
+      description,
+      status: "tentative",
+      start: { dateTime: input.startISO, timeZone: BOOKING.timeZone },
+      end: { dateTime: input.endISO, timeZone: BOOKING.timeZone },
+    }),
+  });
+  if (!res.ok) throw new Error(`hold create failed: ${res.status} ${await res.text()}`);
+  const data = await res.json();
+  return { id: data.id };
+}
+
+/** Confirms a held event: adds the guest (sends the invite) + a Meet link. */
+export async function confirmHold(
+  eventId: string,
+  attendee: { email: string; name: string }
+): Promise<{ htmlLink: string }> {
+  const token = await accessToken();
   const res = await fetch(
-    `${API}/calendars/${encodeURIComponent(BOOKING.calendarId)}/events?sendUpdates=all&conferenceDataVersion=1`,
+    `${API}/calendars/${cal()}/events/${encodeURIComponent(eventId)}?sendUpdates=all&conferenceDataVersion=1`,
     {
-      method: "POST",
+      method: "PATCH",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        summary: `Intro call — ${input.attendeeName}`,
-        description,
-        start: { dateTime: input.startISO, timeZone: BOOKING.timeZone },
-        end: { dateTime: input.endISO, timeZone: BOOKING.timeZone },
-        attendees: [{ email: input.attendeeEmail, displayName: input.attendeeName }],
+        summary: `Intro call — ${attendee.name}`,
+        status: "confirmed",
+        attendees: [{ email: attendee.email, displayName: attendee.name }],
         conferenceData: {
           createRequest: {
             requestId: randomUUID(),
@@ -86,7 +113,20 @@ export async function createEvent(input: CreateEventInput): Promise<{ id: string
       }),
     }
   );
-  if (!res.ok) throw new Error(`event create failed: ${res.status} ${await res.text()}`);
+  if (!res.ok) throw new Error(`confirm failed: ${res.status} ${await res.text()}`);
   const data = await res.json();
-  return { id: data.id, htmlLink: data.htmlLink };
+  return { htmlLink: data.htmlLink };
+}
+
+/** Removes a held/declined event, freeing the slot. */
+export async function deleteEvent(eventId: string): Promise<void> {
+  const token = await accessToken();
+  const res = await fetch(
+    `${API}/calendars/${cal()}/events/${encodeURIComponent(eventId)}?sendUpdates=none`,
+    { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
+  );
+  // 410 = already gone; treat as success.
+  if (!res.ok && res.status !== 410) {
+    throw new Error(`delete failed: ${res.status} ${await res.text()}`);
+  }
 }

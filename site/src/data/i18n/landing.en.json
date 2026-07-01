@@ -121,7 +121,7 @@
     "bookCall": "Book a call",
     "scheduler": {
       "heading": "Book a meeting",
-      "intro": "Pick a slot that works for you — you'll get a calendar invite with a video link by email.",
+      "intro": "Pick a slot that works for you. I'll confirm it and send a calendar invite with a video link.",
       "dateLabel": "Choose a day",
       "timeLabel": "Available times",
       "loading": "Loading times…",
@@ -131,8 +131,8 @@
       "topicLabel": "What would you like to discuss? (optional)",
       "submit": "Book meeting",
       "booking": "Booking…",
-      "successTitle": "You're booked!",
-      "successBody": "A calendar invite is on its way to your inbox.",
+      "successTitle": "Request sent!",
+      "successBody": "You'll get a calendar invite by email once it's confirmed.",
       "error": "Something went wrong. Please try again.",
       "taken": "That time was just taken — please pick another.",
       "tzNote": "Times shown in {tz}."

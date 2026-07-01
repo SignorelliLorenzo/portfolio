@@ -7,16 +7,17 @@ import { DateTime } from "luxon";
 export const BOOKING = {
   timeZone: process.env.BOOKING_TIMEZONE || "Europe/Rome",
   calendarId: process.env.GOOGLE_CALENDAR_ID || "primary",
+  ownerEmail: "signorelli.lorenzo.business@gmail.com",
   slotMinutes: 30,
-  minNoticeHours: 12,
+  minNoticeHours: 24,
   maxDaysAhead: 30,
   // [startHour, endHour) in local time, keyed by ISO weekday (1 = Mon … 7 = Sun)
   workingHours: {
-    1: [9, 18],
-    2: [9, 18],
-    3: [9, 18],
-    4: [9, 18],
-    5: [9, 17],
+    1: [16, 18],
+    2: [16, 18],
+    3: [16, 18],
+    4: [16, 18],
+    5: [16, 18],
   } as Record<number, [number, number] | undefined>,
 };
 
