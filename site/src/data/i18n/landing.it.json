@@ -116,6 +116,8 @@
     },
     "footerPrompt": "Preferisci l'email?",
     "footerEmail": "signorelli.lorenzo.business@gmail.com",
+    "tabMessage": "Messaggio veloce",
+    "tabCall": "Prenota una call",
     "bookCallDivider": "oppure",
     "bookCallPrompt": "Preferisci parlarne a voce? Scegli l'orario che preferisci.",
     "bookCall": "Prenota una call",
