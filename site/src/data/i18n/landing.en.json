@@ -148,11 +148,18 @@
     "mobileHint": "The full A4 preview is best viewed on a larger screen — download the PDF to read it.",
     "profile": {
       "title": "Profile",
-      "text": "AI Software Engineer with 3+ years of professional experience building agentic AI systems, computer vision pipelines and full-stack applications. Currently designing AI architectures for Toyota at Silicon Shoring Reply. Skilled in Python, TypeScript, Java and Go across LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
+      "text": "AI Software Engineer with 3+ years of professional experience building agentic AI systems, computer vision pipelines and full-stack applications. Currently designing AI architectures for Toyota at Silicon Shoring Reply, and lead AI engineer on ARES, an autonomous security-testing platform at DODO. Skilled in Python, TypeScript, Java and Go across LangGraph, LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
     },
     "experience": {
       "title": "Experience",
       "items": [
+        {
+          "role": "Lead AI Engineer — ARES",
+          "company": "DODO",
+          "period": "Mar 2026 – Present",
+          "location": "Remote · Alongside Reply",
+          "description": "Lead engineer on ARES, an autonomous security-testing platform. Designed and built the multi-agent layer end-to-end: a LangGraph mission orchestrator that plans, delegates and evaluates work across specialist recon and exploit teams, with quality gates, sandboxed tool execution, evidence persistence and cooperative cancellation. Python 3.12, LangGraph."
+        },
         {
           "role": "AI Specialist / AI Architect — Toyota",
           "company": "Silicon Shoring Reply",
@@ -194,13 +201,6 @@
           "period": "Dec 2022 – Sep 2023",
           "location": "Remote",
           "description": "Built an automated pipeline that scrapes and digitizes PDFs into structured CSV data, replacing manual data entry. Selenium, BeautifulSoup, Pandas."
-        },
-        {
-          "role": "Team Lead (Internship)",
-          "company": "Lutech",
-          "period": "Dec 2019 – Feb 2022",
-          "location": "Bergamo, Italy",
-          "description": "Led a team to deliver 3 projects end-to-end — CamHouse, BusGlyphs and Authentication Disk — in C# and Windows Forms."
         }
       ]
     },
@@ -228,7 +228,7 @@
       "categories": [
         {
           "name": "AI / Machine Learning",
-          "items": ["PyTorch", "LangChain", "YOLO", "OpenCV", "Hugging Face", "Azure AI Foundry", "SAM", "AI Agents"]
+          "items": ["PyTorch", "LangGraph", "LangChain", "YOLO", "OpenCV", "Azure AI Foundry", "SAM", "AI Agents"]
         },
         {
           "name": "Languages & Frameworks",

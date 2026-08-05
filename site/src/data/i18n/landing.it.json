@@ -148,11 +148,18 @@
     "mobileHint": "L'anteprima A4 completa si vede meglio su uno schermo più grande — scarica il PDF per leggerla.",
     "profile": {
       "title": "Profilo",
-      "text": "AI Software Engineer con 3+ anni di esperienza professionale nella creazione di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente progetto architetture AI per Toyota presso Silicon Shoring Reply. Competenze in Python, TypeScript, Java e Go su LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
+      "text": "AI Software Engineer con 3+ anni di esperienza professionale nella creazione di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente progetto architetture AI per Toyota presso Silicon Shoring Reply e sono lead AI engineer di ARES, piattaforma di security testing autonomo di DODO. Competenze in Python, TypeScript, Java e Go su LangGraph, LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
     },
     "experience": {
       "title": "Esperienza",
       "items": [
+        {
+          "role": "Lead AI Engineer — ARES",
+          "company": "DODO",
+          "period": "Mar 2026 – Presente",
+          "location": "Da remoto · In parallelo a Reply",
+          "description": "Lead engineer di ARES, piattaforma di security testing autonomo. Progettazione e sviluppo end-to-end del layer multi-agente: un mission orchestrator in LangGraph che pianifica, delega e valuta il lavoro di team specializzati di recon ed exploit, con quality gate, esecuzione di tool in sandbox, persistenza delle evidenze e cancellazione cooperativa. Python 3.12, LangGraph."
+        },
         {
           "role": "AI Specialist / AI Architect — Toyota",
           "company": "Silicon Shoring Reply",
@@ -194,13 +201,6 @@
           "period": "Dic 2022 – Set 2023",
           "location": "Da remoto",
           "description": "Sviluppo di una pipeline automatica che effettua scraping e digitalizzazione di PDF in dati strutturati CSV, sostituendo l'inserimento manuale. Selenium, BeautifulSoup, Pandas."
-        },
-        {
-          "role": "Capogruppo (Stage)",
-          "company": "Lutech",
-          "period": "Dic 2019 – Feb 2022",
-          "location": "Bergamo",
-          "description": "Guida del team alla consegna end-to-end di 3 progetti — CamHouse, BusGlyphs e Authentication Disk — in C# e Windows Forms."
         }
       ]
     },
@@ -228,7 +228,7 @@
       "categories": [
         {
           "name": "AI / Machine Learning",
-          "items": ["PyTorch", "LangChain", "YOLO", "OpenCV", "Hugging Face", "Azure AI Foundry", "SAM", "AI Agents"]
+          "items": ["PyTorch", "LangGraph", "LangChain", "YOLO", "OpenCV", "Azure AI Foundry", "SAM", "AI Agents"]
         },
         {
           "name": "Linguaggi & Framework",
