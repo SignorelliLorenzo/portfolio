@@ -25,7 +25,10 @@ export function personSchema() {
     description:
       "Full-Stack Developer & AI Engineer building agentic AI systems, computer vision pipelines and high-performance web applications.",
     email: "mailto:signorelli.lorenzo.business@gmail.com",
-    worksFor: { "@type": "Organization", name: "Silicon Shoring Reply" },
+    worksFor: [
+      { "@type": "Organization", name: "Silicon Shoring Reply" },
+      { "@type": "Organization", name: "DODO" },
+    ],
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of Milan" },
     address: {
       "@type": "PostalAddress",
@@ -42,6 +45,8 @@ export function personSchema() {
       "Agentic AI Systems",
       "Large Language Models",
       "LangChain",
+      "LangGraph",
+      "Multi-Agent Systems",
       "Retrieval-Augmented Generation",
       "Computer Vision",
       "PyTorch",
