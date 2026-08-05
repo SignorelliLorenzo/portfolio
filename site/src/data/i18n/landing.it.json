@@ -148,24 +148,24 @@
     "mobileHint": "L'anteprima A4 completa si vede meglio su uno schermo più grande — scarica il PDF per leggerla.",
     "profile": {
       "title": "Profilo",
-      "text": "AI Software Engineer con 3+ anni di esperienza professionale nella creazione di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente progetto architetture AI per Toyota presso Silicon Shoring Reply e sono lead AI engineer di ARES, una kill chain offensiva completamente autonoma, presso DODO. Competenze in Python, TypeScript, Java e Go su LangGraph, LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
+      "text": "AI Software Engineer con 3+ anni di esperienza professionale nella creazione di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente progetto architetture AI per Toyota presso Silicon Shoring Reply; in precedenza lead AI engineer di ARES, una kill chain offensiva completamente autonoma, presso DODO. Competenze in Python, TypeScript, Java e Go su LangGraph, LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
     },
     "experience": {
       "title": "Esperienza",
       "items": [
-        {
-          "role": "Lead AI Engineer — ARES",
-          "company": "DODO",
-          "period": "Mar 2026 – Presente",
-          "location": "Da remoto",
-          "description": "Lead engineer di ARES, una kill chain completamente autonoma. Dato un obiettivo di sicurezza, conduce l'intera attività end-to-end in autonomia e restituisce un report di quanto individuato e verificato — lavoro che altrimenti richiederebbe un team di penetration testing."
-        },
         {
           "role": "AI Specialist / AI Architect — Toyota",
           "company": "Silicon Shoring Reply",
           "period": "Mag 2026 – Presente",
           "location": "Milano · Ibrido",
           "description": "Progettazione e realizzazione di sistemi di AI agentica in produzione per Toyota — assistenti AI, recupero della conoscenza aziendale e supporto decisionale intelligente sui processi di business core. LangChain, Azure AI Foundry."
+        },
+        {
+          "role": "Lead AI Engineer — ARES",
+          "company": "DODO",
+          "period": "Mar 2026 – Ago 2026",
+          "location": "Da remoto",
+          "description": "Lead engineer di ARES, una kill chain completamente autonoma. Dato un obiettivo di sicurezza, conduceva l'intera attività end-to-end in autonomia e restituiva un report di quanto individuato e verificato — lavoro che altrimenti richiederebbe un team di penetration testing."
         },
         {
           "role": "AI Consultant — Stellantis",

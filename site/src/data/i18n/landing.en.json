@@ -148,24 +148,24 @@
     "mobileHint": "The full A4 preview is best viewed on a larger screen — download the PDF to read it.",
     "profile": {
       "title": "Profile",
-      "text": "AI Software Engineer with 3+ years of professional experience building agentic AI systems, computer vision pipelines and full-stack applications. Currently designing AI architectures for Toyota at Silicon Shoring Reply, and lead AI engineer on ARES, a fully autonomous offensive-security kill chain, at DODO. Skilled in Python, TypeScript, Java and Go across LangGraph, LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
+      "text": "AI Software Engineer with 3+ years of professional experience building agentic AI systems, computer vision pipelines and full-stack applications. Currently designing AI architectures for Toyota at Silicon Shoring Reply; previously lead AI engineer on ARES, a fully autonomous offensive-security kill chain, at DODO. Skilled in Python, TypeScript, Java and Go across LangGraph, LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
     },
     "experience": {
       "title": "Experience",
       "items": [
-        {
-          "role": "Lead AI Engineer — ARES",
-          "company": "DODO",
-          "period": "Mar 2026 – Present",
-          "location": "Remote",
-          "description": "Lead engineer on ARES, a fully autonomous kill chain. Given a security objective, it carries out the entire engagement end-to-end on its own and returns a report of what it found and verified — work that would otherwise take a human penetration-testing team."
-        },
         {
           "role": "AI Specialist / AI Architect — Toyota",
           "company": "Silicon Shoring Reply",
           "period": "May 2026 – Present",
           "location": "Milan, Italy · Hybrid",
           "description": "Architecting and shipping production agentic AI systems for Toyota — powering AI assistants, enterprise knowledge retrieval and intelligent decision support across core business processes. Built on LangChain and Azure AI Foundry."
+        },
+        {
+          "role": "Lead AI Engineer — ARES",
+          "company": "DODO",
+          "period": "Mar 2026 – Aug 2026",
+          "location": "Remote",
+          "description": "Lead engineer on ARES, a fully autonomous kill chain. Given a security objective, it carried out the entire engagement end-to-end on its own and returned a report of what it found and verified — work that would otherwise take a human penetration-testing team."
         },
         {
           "role": "AI Consultant — Stellantis",
