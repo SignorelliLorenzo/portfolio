@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { NeuralBackground } from "@/components/effects/neural-background";
 import { useLandingCopyOptional } from "@/components/providers/landing-copy-provider";
@@ -14,11 +14,6 @@ const contacts = [
     href: "mailto:signorelli.lorenzo.business@gmail.com",
     icon: FaEnvelope,
     label: "Email",
-  },
-  {
-    href: "tel:3355860184",
-    icon: FaPhone,
-    label: "Phone",
   },
   {
     href: "https://github.com/SignorelliLorenzo",

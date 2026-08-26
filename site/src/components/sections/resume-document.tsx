@@ -1,6 +1,5 @@
 import {
   FaEnvelope,
-  FaPhone,
   FaMapMarkerAlt,
   FaGithub,
   FaLinkedin,
@@ -77,7 +76,6 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
               <div className="space-y-[9px]">
                 {([
                   { Icon: FaEnvelope, href: "mailto:signorelli.lorenzo.business@gmail.com", text: "signorelli.lorenzo.business@gmail.com", breakAll: true },
-                  { Icon: FaPhone, href: "tel:+393355860184", text: "+39 335 586 0184" },
                   { Icon: FaMapMarkerAlt, text: "Bergamo, Italy" },
                   { Icon: FaLinkedin, href: "https://www.linkedin.com/in/lorenzo-signorelli-is-a-dev", text: "lorenzo-signorelli-is-a-dev", external: true },
                   { Icon: FaGithub, href: "https://github.com/SignorelliLorenzo", text: "SignorelliLorenzo", external: true },
