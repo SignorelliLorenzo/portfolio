@@ -250,14 +250,9 @@ export function ResumeDocument({ copy, palette: p }: ResumeDocumentProps) {
                   )}
                   {/* Dot */}
                   <div className="absolute rounded-full z-10" style={{ left: "-0.5px", top: "6px", width: "10px", height: "10px", border: `2.5px solid ${ACCENT}`, backgroundColor: p.mainBg }} />
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-[12.5px] font-bold leading-snug" style={{ color: p.mainStrong }}>
-                      {item.degree}
-                    </h3>
-                    <span className="text-[9.5px] whitespace-nowrap tabular-nums shrink-0 font-medium" style={{ color: M(0.35) }}>
-                      {item.period}
-                    </span>
-                  </div>
+                  <h3 className="text-[12.5px] font-bold leading-snug" style={{ color: p.mainStrong }}>
+                    {item.degree}
+                  </h3>
                   <p className="text-[10px] font-semibold mt-[2px]" style={{ color: AT(0.8) }}>
                     {item.institution} · {item.location}
                   </p>

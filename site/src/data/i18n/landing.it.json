@@ -148,15 +148,22 @@
     "mobileHint": "L'anteprima A4 completa si vede meglio su uno schermo più grande — scarica il PDF per leggerla.",
     "profile": {
       "title": "Profilo",
-      "text": "AI Software Engineer con 3+ anni di esperienza professionale nella creazione di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente progetto architetture AI per Toyota presso Silicon Shoring Reply; in precedenza lead AI engineer di ARES, una kill chain offensiva completamente autonoma, presso DODO. Competenze in Python, TypeScript, Java e Go su LangGraph, LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
+      "text": "AI Software Engineer con 3+ anni di esperienza professionale nella creazione di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente co-fondatore di Fast Stack Labs; in precedenza AI architect per Toyota presso Silicon Shoring Reply e lead AI engineer di ARES, una kill chain offensiva completamente autonoma, presso DODO. Competenze in Python, TypeScript, Java e Go su LangGraph, LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
     },
     "experience": {
       "title": "Esperienza",
       "items": [
         {
+          "role": "Co-Founder",
+          "company": "Fast Stack Labs",
+          "period": "Set 2026 – Presente",
+          "location": "Bergamo · Ibrido",
+          "description": "Co-fondatore di Fast Stack Labs, studio software che realizza sistemi di AI agentica e prodotti full-stack per clienti — guida della direzione tecnica, dell'architettura e della delivery."
+        },
+        {
           "role": "AI Specialist / AI Architect — Toyota",
           "company": "Silicon Shoring Reply",
-          "period": "Mag 2026 – Presente",
+          "period": "Mag 2026 – Set 2026",
           "location": "Milano · Ibrido",
           "description": "Progettazione e realizzazione di sistemi di AI agentica in produzione per Toyota — assistenti AI, recupero della conoscenza aziendale e supporto decisionale intelligente sui processi di business core. LangChain, Azure AI Foundry."
         },
@@ -183,21 +190,14 @@
         },
         {
           "role": "AI Engineer",
-          "company": "FastStackLabs",
+          "company": "Freelance",
           "period": "Dic 2024 – Set 2025",
           "location": "Ibrido",
           "description": "Sviluppo di una pipeline di computer vision basata su YOLO per il tracking dei giocatori di basket e la generazione di box score live dalle riprese di gioco, eliminando il conteggio manuale. Inoltre soluzioni di AI agentica per clienti."
         },
         {
-          "role": "Sviluppatore Web",
-          "company": "FastStackLabs",
-          "period": "Set 2023 – Dic 2024",
-          "location": "Ibrido",
-          "description": "Realizzazione di siti web per clienti end-to-end — dal design al deploy — con React.js e JavaScript, in parallelo agli studi universitari a tempo pieno."
-        },
-        {
           "role": "Web Scraping & Data Analysis — Argenta S.p.A.",
-          "company": "FastStackLabs",
+          "company": "Freelance",
           "period": "Dic 2022 – Set 2023",
           "location": "Da remoto",
           "description": "Sviluppo di una pipeline automatica che effettua scraping e digitalizzazione di PDF in dati strutturati CSV, sostituendo l'inserimento manuale. Selenium, BeautifulSoup, Pandas."
@@ -210,14 +210,12 @@
         {
           "degree": "Laurea Triennale in Informatica",
           "institution": "Università degli Studi di Milano",
-          "period": "2022 – 2025",
           "location": "Milano",
           "grade": "104/110"
         },
         {
           "degree": "Diploma in Informatica",
           "institution": "ITIS Paleocapa",
-          "period": "2018 – 2022",
           "location": "Bergamo",
           "grade": "100/100"
         }
