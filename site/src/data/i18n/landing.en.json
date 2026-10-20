@@ -148,24 +148,24 @@
     "mobileHint": "The full A4 preview is best viewed on a larger screen — download the PDF to read it.",
     "profile": {
       "title": "Profile",
-      "text": "AI Software Engineer with 3+ years of professional experience building agentic AI systems, computer vision pipelines and full-stack applications. Currently co-founder of Fast Stack Labs; previously AI architect for Toyota at Silicon Shoring Reply and lead AI engineer on ARES, a fully autonomous offensive-security kill chain, at DODO. Skilled in Python, TypeScript, Java and Go across LangGraph, LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
+      "text": "AI Software Engineer experienced in designing and building agentic AI systems, computer vision pipelines and full-stack applications. Currently co-founder of Fast Stack Labs; previously AI architect for Toyota at Silicon Shoring Reply and lead AI engineer on ARES, a fully autonomous offensive-security kill chain, at DODO. Skilled in Python, TypeScript, Java and Go across LangGraph, LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
     },
     "experience": {
-      "title": "Experience",
+      "title": "Relevant Experience",
       "items": [
         {
           "role": "Co-Founder",
           "company": "Fast Stack Labs",
           "period": "Sep 2026 – Present",
           "location": "Bergamo, Italy · Hybrid",
-          "description": "Co-founded Fast Stack Labs, a software studio building agentic AI systems and full-stack products for clients — leading technical direction, architecture and delivery."
+          "description": "Co-founded Fast Stack Labs, a software studio building agentic AI systems and full-stack products. Lead technical architecture, engineering standards and delivery, from design through implementation."
         },
         {
           "role": "AI Specialist / AI Architect — Toyota",
           "company": "Silicon Shoring Reply",
           "period": "May 2026 – Sep 2026",
           "location": "Milan, Italy · Hybrid",
-          "description": "Architecting and shipping production agentic AI systems for Toyota — powering AI assistants, enterprise knowledge retrieval and intelligent decision support across core business processes. Built on LangChain and Azure AI Foundry."
+          "description": "Designed production agentic AI systems for Toyota: AI assistants, enterprise RAG and decision support. Developed prompt and context engineering strategies and agent workflows with LangGraph, LangChain and Azure AI Foundry."
         },
         {
           "role": "Lead AI Engineer — ARES",
@@ -186,7 +186,7 @@
           "company": "Silicon Shoring Reply",
           "period": "Sep 2025 – Jan 2026",
           "location": "Milan, Italy · Hybrid",
-          "description": "Sole owner of the backend powering the DAT management system for Regione Lombardia — designed, built and maintained scalable, secure Spring services running a region-wide public-sector platform."
+          "description": "Owned backend architecture, development and maintenance for Regione Lombardia's DAT management system, including API contracts and technical documentation. Built scalable, secure Spring services for a regional public-sector platform."
         },
         {
           "role": "AI Engineer",
