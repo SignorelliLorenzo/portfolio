@@ -148,17 +148,17 @@
     "mobileHint": "L'anteprima A4 completa si vede meglio su uno schermo più grande — scarica il PDF per leggerla.",
     "profile": {
       "title": "Profilo",
-      "text": "AI Software Engineer con esperienza nella progettazione e nello sviluppo di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente co-fondatore di Fast Stack Labs; in precedenza AI architect per Toyota presso Silicon Shoring Reply e lead AI engineer di ARES, una kill chain offensiva completamente autonoma, presso DODO. Competenze in Python, TypeScript, Java e Go su LangGraph, LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
+      "text": "AI Software Engineer con esperienza nella progettazione e nello sviluppo di sistemi AI agentici, pipeline di computer vision e applicazioni full-stack. Attualmente AI Engineer presso Fast Stack Labs; in precedenza AI architect per Toyota presso Silicon Shoring Reply e lead AI engineer di ARES, una kill chain offensiva completamente autonoma, presso DODO. Competenze in Python, TypeScript, Java e Go su LangGraph, LangChain, PyTorch, YOLO, React e Spring. Laurea in Informatica all'Università degli Studi di Milano."
     },
     "experience": {
       "title": "Esperienze rilevanti",
       "items": [
         {
-          "role": "Co-Founder",
+          "role": "AI Engineer",
           "company": "Fast Stack Labs",
           "period": "Set 2026 – Presente",
           "location": "Bergamo · Ibrido",
-          "description": "Co-fondatore di Fast Stack Labs, studio software che realizza sistemi di AI agentica e prodotti full-stack. Responsabile di architettura tecnica, standard di sviluppo e delivery, dalla progettazione all'implementazione."
+          "description": "AI Engineer presso Fast Stack Labs, studio software che realizza sistemi di AI agentica e prodotti full-stack. Responsabile di architettura tecnica, standard di sviluppo e delivery, dalla progettazione all'implementazione."
         },
         {
           "role": "AI Specialist / AI Architect — Toyota",

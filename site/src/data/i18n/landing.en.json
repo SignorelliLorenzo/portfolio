@@ -148,17 +148,17 @@
     "mobileHint": "The full A4 preview is best viewed on a larger screen — download the PDF to read it.",
     "profile": {
       "title": "Profile",
-      "text": "AI Software Engineer experienced in designing and building agentic AI systems, computer vision pipelines and full-stack applications. Currently co-founder of Fast Stack Labs; previously AI architect for Toyota at Silicon Shoring Reply and lead AI engineer on ARES, a fully autonomous offensive-security kill chain, at DODO. Skilled in Python, TypeScript, Java and Go across LangGraph, LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
+      "text": "AI Software Engineer experienced in designing and building agentic AI systems, computer vision pipelines and full-stack applications. Currently AI Engineer at Fast Stack Labs; previously AI architect for Toyota at Silicon Shoring Reply and lead AI engineer on ARES, a fully autonomous offensive-security kill chain, at DODO. Skilled in Python, TypeScript, Java and Go across LangGraph, LangChain, PyTorch, YOLO, React and Spring. BSc in Computer Science from the University of Milan."
     },
     "experience": {
       "title": "Relevant Experience",
       "items": [
         {
-          "role": "Co-Founder",
+          "role": "AI Engineer",
           "company": "Fast Stack Labs",
           "period": "Sep 2026 – Present",
           "location": "Bergamo, Italy · Hybrid",
-          "description": "Co-founded Fast Stack Labs, a software studio building agentic AI systems and full-stack products. Lead technical architecture, engineering standards and delivery, from design through implementation."
+          "description": "AI Engineer at Fast Stack Labs, a software studio building agentic AI systems and full-stack products. Lead technical architecture, engineering standards and delivery, from design through implementation."
         },
         {
           "role": "AI Specialist / AI Architect — Toyota",
